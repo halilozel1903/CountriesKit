@@ -1,0 +1,56 @@
+[
+  {
+    "name": {
+      "common": "Oddland",
+      "official": "Odd Republic"
+    },
+    "cca2": "OD",
+    "cca3": "ODD",
+    "gini": "not a map",
+    "car": {
+      "signs": [
+        ""
+      ],
+      "side": "middle"
+    },
+    "coatOfArms": {},
+    "flags": {
+      "png": "",
+      "svg": "https://flagcdn.com/od.svg",
+      "alt": ""
+    },
+    "population": "many",
+    "area": 12,
+    "latlng": [
+      1.5
+    ],
+    "idd": {},
+    "capital": [],
+    "borders": []
+  },
+  {
+    "name": {
+      "common": "United States",
+      "official": "United States of America"
+    },
+    "cca2": "US",
+    "cca3": "USA",
+    "idd": {
+      "root": "+1",
+      "suffixes": [
+        "201",
+        "202",
+        "203"
+      ]
+    },
+    "capital": [
+      "Washington, D.C."
+    ],
+    "car": {
+      "signs": [
+        "USA"
+      ],
+      "side": "right"
+    }
+  }
+]

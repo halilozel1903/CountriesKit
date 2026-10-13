@@ -1,0 +1,170 @@
+[
+  {
+    "name": {
+      "common": "Greece",
+      "official": "Hellenic Republic",
+      "nativeName": {}
+    },
+    "cca2": "GR",
+    "cca3": "GRC",
+    "flags": {
+      "png": "https://flagcdn.com/w320/gr.png",
+      "svg": "https://flagcdn.com/gr.svg"
+    },
+    "capital": [
+      "Athens"
+    ],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 10715549,
+    "area": 131990.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Armenia",
+      "official": "Republic of Armenia",
+      "nativeName": {}
+    },
+    "cca2": "AM",
+    "cca3": "ARM",
+    "flags": {
+      "png": "https://flagcdn.com/w320/am.png",
+      "svg": "https://flagcdn.com/am.svg"
+    },
+    "capital": [
+      "Yerevan"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 2963234,
+    "area": 29743.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Syria",
+      "official": "Syrian Arab Republic",
+      "nativeName": {}
+    },
+    "cca2": "SY",
+    "cca3": "SYR",
+    "flags": {
+      "png": "https://flagcdn.com/w320/sy.png",
+      "svg": "https://flagcdn.com/sy.svg"
+    },
+    "capital": [
+      "Damascus"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 17500657,
+    "area": 185180.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Bulgaria",
+      "official": "Republic of Bulgaria",
+      "nativeName": {}
+    },
+    "cca2": "BG",
+    "cca3": "BGR",
+    "flags": {
+      "png": "https://flagcdn.com/w320/bg.png",
+      "svg": "https://flagcdn.com/bg.svg"
+    },
+    "capital": [
+      "Sofia"
+    ],
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "population": 6927288,
+    "area": 110879.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Azerbaijan",
+      "official": "Republic of Azerbaijan",
+      "nativeName": {}
+    },
+    "cca2": "AZ",
+    "cca3": "AZE",
+    "flags": {
+      "png": "https://flagcdn.com/w320/az.png",
+      "svg": "https://flagcdn.com/az.svg"
+    },
+    "capital": [
+      "Baku"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 10110116,
+    "area": 86600.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Georgia",
+      "official": "Georgia",
+      "nativeName": {}
+    },
+    "cca2": "GE",
+    "cca3": "GEO",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ge.png",
+      "svg": "https://flagcdn.com/ge.svg"
+    },
+    "capital": [
+      "Tbilisi"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 3714000,
+    "area": 69700.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Iran",
+      "official": "Islamic Republic of Iran",
+      "nativeName": {}
+    },
+    "cca2": "IR",
+    "cca3": "IRN",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ir.png",
+      "svg": "https://flagcdn.com/ir.svg"
+    },
+    "capital": [
+      "Tehran"
+    ],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 83992953,
+    "area": 1648195.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Iraq",
+      "official": "Republic of Iraq",
+      "nativeName": {}
+    },
+    "cca2": "IQ",
+    "cca3": "IRQ",
+    "flags": {
+      "png": "https://flagcdn.com/w320/iq.png",
+      "svg": "https://flagcdn.com/iq.svg"
+    },
+    "capital": [
+      "Baghdad"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 40222503,
+    "area": 438317.0,
+    "independent": true
+  }
+]

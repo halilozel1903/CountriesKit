@@ -1,0 +1,409 @@
+[
+  {
+    "name": {
+      "common": "Germany",
+      "official": "Federal Republic of Germany",
+      "nativeName": {}
+    },
+    "cca2": "DE",
+    "cca3": "DEU",
+    "flags": {
+      "png": "https://flagcdn.com/w320/de.png",
+      "svg": "https://flagcdn.com/de.svg"
+    },
+    "capital": [
+      "Berlin"
+    ],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "population": 83240525,
+    "area": 357114.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Åland Islands",
+      "official": "Åland Islands",
+      "nativeName": {}
+    },
+    "cca2": "AX",
+    "cca3": "ALA",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ax.png",
+      "svg": "https://flagcdn.com/ax.svg"
+    },
+    "capital": [
+      "Mariehamn"
+    ],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "population": 29458,
+    "area": 1580.0,
+    "independent": false
+  },
+  {
+    "name": {
+      "common": "France",
+      "official": "French Republic",
+      "nativeName": {}
+    },
+    "cca2": "FR",
+    "cca3": "FRA",
+    "flags": {
+      "png": "https://flagcdn.com/w320/fr.png",
+      "svg": "https://flagcdn.com/fr.svg"
+    },
+    "capital": [
+      "Paris"
+    ],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "population": 67391582,
+    "area": 551695.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Norway",
+      "official": "Kingdom of Norway",
+      "nativeName": {}
+    },
+    "cca2": "NO",
+    "cca3": "NOR",
+    "flags": {
+      "png": "https://flagcdn.com/w320/no.png",
+      "svg": "https://flagcdn.com/no.svg"
+    },
+    "capital": [
+      "Oslo"
+    ],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "population": 5379475,
+    "area": 323802.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Italy",
+      "official": "Italian Republic",
+      "nativeName": {}
+    },
+    "cca2": "IT",
+    "cca3": "ITA",
+    "flags": {
+      "png": "https://flagcdn.com/w320/it.png",
+      "svg": "https://flagcdn.com/it.svg"
+    },
+    "capital": [
+      "Rome"
+    ],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 59554023,
+    "area": 301336.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Vatican City",
+      "official": "Vatican City State",
+      "nativeName": {}
+    },
+    "cca2": "VA",
+    "cca3": "VAT",
+    "flags": {
+      "png": "https://flagcdn.com/w320/va.png",
+      "svg": "https://flagcdn.com/va.svg"
+    },
+    "capital": [
+      "Vatican City"
+    ],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 451,
+    "area": 0.44,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Greece",
+      "official": "Hellenic Republic",
+      "nativeName": {}
+    },
+    "cca2": "GR",
+    "cca3": "GRC",
+    "flags": {
+      "png": "https://flagcdn.com/w320/gr.png",
+      "svg": "https://flagcdn.com/gr.svg"
+    },
+    "capital": [
+      "Athens"
+    ],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 10715549,
+    "area": 131990.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Armenia",
+      "official": "Republic of Armenia",
+      "nativeName": {}
+    },
+    "cca2": "AM",
+    "cca3": "ARM",
+    "flags": {
+      "png": "https://flagcdn.com/w320/am.png",
+      "svg": "https://flagcdn.com/am.svg"
+    },
+    "capital": [
+      "Yerevan"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 2963234,
+    "area": 29743.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Syria",
+      "official": "Syrian Arab Republic",
+      "nativeName": {}
+    },
+    "cca2": "SY",
+    "cca3": "SYR",
+    "flags": {
+      "png": "https://flagcdn.com/w320/sy.png",
+      "svg": "https://flagcdn.com/sy.svg"
+    },
+    "capital": [
+      "Damascus"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 17500657,
+    "area": 185180.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Bulgaria",
+      "official": "Republic of Bulgaria",
+      "nativeName": {}
+    },
+    "cca2": "BG",
+    "cca3": "BGR",
+    "flags": {
+      "png": "https://flagcdn.com/w320/bg.png",
+      "svg": "https://flagcdn.com/bg.svg"
+    },
+    "capital": [
+      "Sofia"
+    ],
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "population": 6927288,
+    "area": 110879.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Azerbaijan",
+      "official": "Republic of Azerbaijan",
+      "nativeName": {}
+    },
+    "cca2": "AZ",
+    "cca3": "AZE",
+    "flags": {
+      "png": "https://flagcdn.com/w320/az.png",
+      "svg": "https://flagcdn.com/az.svg"
+    },
+    "capital": [
+      "Baku"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 10110116,
+    "area": 86600.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Georgia",
+      "official": "Georgia",
+      "nativeName": {}
+    },
+    "cca2": "GE",
+    "cca3": "GEO",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ge.png",
+      "svg": "https://flagcdn.com/ge.svg"
+    },
+    "capital": [
+      "Tbilisi"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 3714000,
+    "area": 69700.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Iran",
+      "official": "Islamic Republic of Iran",
+      "nativeName": {}
+    },
+    "cca2": "IR",
+    "cca3": "IRN",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ir.png",
+      "svg": "https://flagcdn.com/ir.svg"
+    },
+    "capital": [
+      "Tehran"
+    ],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 83992953,
+    "area": 1648195.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Iraq",
+      "official": "Republic of Iraq",
+      "nativeName": {}
+    },
+    "cca2": "IQ",
+    "cca3": "IRQ",
+    "flags": {
+      "png": "https://flagcdn.com/w320/iq.png",
+      "svg": "https://flagcdn.com/iq.svg"
+    },
+    "capital": [
+      "Baghdad"
+    ],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 40222503,
+    "area": 438317.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Japan",
+      "official": "Japan",
+      "nativeName": {}
+    },
+    "cca2": "JP",
+    "cca3": "JPN",
+    "flags": {
+      "png": "https://flagcdn.com/w320/jp.png",
+      "svg": "https://flagcdn.com/jp.svg"
+    },
+    "capital": [
+      "Tokyo"
+    ],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "population": 125836021,
+    "area": 377930.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Brazil",
+      "official": "Federative Republic of Brazil",
+      "nativeName": {}
+    },
+    "cca2": "BR",
+    "cca3": "BRA",
+    "flags": {
+      "png": "https://flagcdn.com/w320/br.png",
+      "svg": "https://flagcdn.com/br.svg"
+    },
+    "capital": [
+      "Brasília"
+    ],
+    "region": "Americas",
+    "subregion": "South America",
+    "population": 212559409,
+    "area": 8515767.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Kenya",
+      "official": "Republic of Kenya",
+      "nativeName": {}
+    },
+    "cca2": "KE",
+    "cca3": "KEN",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ke.png",
+      "svg": "https://flagcdn.com/ke.svg"
+    },
+    "capital": [
+      "Nairobi"
+    ],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "population": 53771300,
+    "area": 580367.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Chad",
+      "official": "Republic of Chad",
+      "nativeName": {}
+    },
+    "cca2": "TD",
+    "cca3": "TCD",
+    "flags": {
+      "png": "https://flagcdn.com/w320/td.png",
+      "svg": "https://flagcdn.com/td.svg"
+    },
+    "capital": [
+      "N'Djamena"
+    ],
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "population": 16425859,
+    "area": 1284000.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Romania",
+      "official": "Romania",
+      "nativeName": {}
+    },
+    "cca2": "RO",
+    "cca3": "ROU",
+    "flags": {
+      "png": "https://flagcdn.com/w320/ro.png",
+      "svg": "https://flagcdn.com/ro.svg"
+    },
+    "capital": [
+      "Bucharest"
+    ],
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "population": 19286123,
+    "area": 238391.0,
+    "independent": true
+  },
+  {
+    "name": {
+      "common": "Nowhere",
+      "official": "No flag"
+    },
+    "cca3": "XXX",
+    "region": "Europe"
+  }
+]

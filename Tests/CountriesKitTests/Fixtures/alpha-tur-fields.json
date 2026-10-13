@@ -1,0 +1,19 @@
+{
+  "name": {
+    "common": "Turkey",
+    "official": "Republic of Turkey",
+    "nativeName": {
+      "tur": {
+        "official": "Türkiye Cumhuriyeti",
+        "common": "Türkiye"
+      }
+    }
+  },
+  "cca3": "TUR",
+  "flags": {
+    "png": "https://flagcdn.com/w320/tr.png",
+    "svg": "https://flagcdn.com/tr.svg",
+    "alt": "The flag of Turkey has a red field bearing a large fly-side facing white crescent and a smaller five-pointed white star placed just outside the crescent opening."
+  },
+  "population": 84339067
+}

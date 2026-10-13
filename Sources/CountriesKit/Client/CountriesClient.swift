@@ -154,7 +154,7 @@ public struct CountriesClient: Sendable {
     /// Fetches and decodes a path below the base URL, for anything this client has no method
     /// for. Each segment is percent-encoded.
     public func get<Value: Decodable>(_ segments: [String], query: [URLQueryItem] = [], as type: Value.Type = Value.self) async throws -> Value {
-        try decode(Value.self, from: data(for: makeRequest(segments, query: query)))
+        try await decode(Value.self, from: data(for: makeRequest(segments, query: query)))
     }
 
     // MARK: - Internals

@@ -44,7 +44,7 @@ final class Atlas {
                 return try await operation()
             } catch {
                 guard attempt < attempts, !Task.isCancelled else { throw error }
-                print("Request failed (attempt \(attempt) of \(attempts)): \(error)")
+                screenshotLog("Request failed (attempt \(attempt) of \(attempts)): \(error)")
                 try await Task.sleep(for: .seconds(Double(attempt) * 2))
                 attempt += 1
             }
@@ -63,8 +63,10 @@ final class Atlas {
                 try await client.countries(in: region, fields: CountryField.listing)
             }
             regions[region] = countries.sortedByName()
+            screenshotLog("Loaded \(countries.count) countries of \(region.name)")
         } catch {
             guard !Task.isCancelled else { return }
+            screenshotLog("Loading \(region.name) failed: \(error)")
             regionErrors[region] = error.localizedDescription
         }
     }
@@ -119,8 +121,10 @@ final class Atlas {
                 try await client.all(fields: CountryField.quiz)
             }
             quizCountries = countries
+            screenshotLog("Loaded \(countries.count) quiz countries")
         } catch {
             guard !Task.isCancelled else { return }
+            screenshotLog("Loading the quiz failed: \(error)")
             quizError = error.localizedDescription
         }
     }

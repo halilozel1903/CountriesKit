@@ -50,8 +50,10 @@ struct CountryDetailView: View {
             let loaded = try await atlas.country(code: code)
             country = loaded
             borders = try await atlas.borders(of: loaded)
+            screenshotLog("Loaded \(loaded.commonName) with \(borders?.count ?? 0) neighbours")
         } catch {
             guard !Task.isCancelled else { return }
+            screenshotLog("Loading \(code) failed: \(error)")
             errorMessage = error.localizedDescription
         }
     }

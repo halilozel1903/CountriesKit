@@ -125,25 +125,37 @@ capture() {
     for attempt in 1 2 3; do
       xcrun simctl terminate "$udid" "$BUNDLE_ID" 2>/dev/null || true
       sleep 1
-      rm -f "$container/tmp/screenshot-ready"
-      if ! xcrun simctl launch "$udid" "$BUNDLE_ID" -screenshot "$scene"; then
-        echo "Could not launch the app for $device-$scene (attempt $attempt), retrying"
-        continue
-      fi
+      rm -f "$container/tmp/screenshot-ready" "$container/tmp/screenshot-log.txt"
+      # Launch with the app's console attached to a pseudo-terminal (so its output is
+      # line-buffered) and kept in a log, which is printed when the scene does not become ready.
+      log="$(mktemp)"
+      xcrun simctl launch --console-pty "$udid" "$BUNDLE_ID" -screenshot "$scene" > "$log" 2>&1 &
+      launcher=$!
       # The app writes this marker once the scene is on screen.
       waited=0
-      while [ ! -f "$container/tmp/screenshot-ready" ] && [ "$waited" -lt 90 ]; do
+      while [ ! -f "$container/tmp/screenshot-ready" ] && [ "$waited" -lt 150 ]; do
         sleep 1
         waited=$((waited + 1))
       done
       if [ ! -f "$container/tmp/screenshot-ready" ]; then
-        echo "The app did not show $scene on $device, retrying"
+        echo "The app did not show $scene on $device (attempt $attempt). Its console:"
+        tail -n 80 "$log" | sed 's/^/    /' || true
+        echo "Its screenshot log:"
+        tail -n 80 "$container/tmp/screenshot-log.txt" 2>/dev/null | sed 's/^/    /' || true
+        xcrun simctl terminate "$udid" "$BUNDLE_ID" 2>/dev/null || true
+        kill "$launcher" 2>/dev/null || true
+        wait "$launcher" 2>/dev/null || true
+        rm -f "$log"
         continue
       fi
       # Let images fade in and transitions settle.
       sleep $((3 + attempt * 2))
       rm -f "$file"
       xcrun simctl io "$udid" screenshot "$file"
+      xcrun simctl terminate "$udid" "$BUNDLE_ID" 2>/dev/null || true
+      kill "$launcher" 2>/dev/null || true
+      wait "$launcher" 2>/dev/null || true
+      rm -f "$log"
       if valid_capture "$file" "$previous" && ! cmp -s "$file" "$home"; then
         ok=1
         break

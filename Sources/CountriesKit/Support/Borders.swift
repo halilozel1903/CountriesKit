@@ -83,6 +83,6 @@ extension Sequence where Element == Country {
 
     /// The sum of every known area, in square kilometres.
     public var totalArea: Double {
-        reduce(0) { $0 + max(0, $1.area ?? 0) }
+        reduce(0) { $0 + Swift.max(0, $1.area ?? 0) }
     }
 }

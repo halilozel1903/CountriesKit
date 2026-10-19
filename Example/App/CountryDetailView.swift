@@ -142,7 +142,7 @@ struct CountryDetailView: View {
 
     /// The country's UN regional group, short enough for a tile.
     private func unGroup(_ country: Country) -> String? {
-        switch country.unRegionalGroup {
+        switch country.unRegionalGroup ?? "" {
         case "Western European and Others Group": return "UN group: WEOG"
         case "Latin American and Caribbean Group": return "UN group: GRULAC"
         case "Asia and the Pacific Group": return "UN group: Asia-Pacific"

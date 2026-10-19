@@ -123,7 +123,7 @@ struct CountryDetailView: View {
     private func facts(_ country: Country) -> some View {
         let columns = [GridItem(.adaptive(minimum: 150), spacing: 10)]
         return LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
-            FactTile("Capital", value: country.primaryCapital ?? "None", detail: otherCapitals(country), systemImage: "building.columns.fill")
+            FactTile("Capital", value: country.primaryCapital ?? "None", detail: otherCapitals(country) ?? country.flagEmoji.map { $0 + " " + country.commonName }, systemImage: "building.columns.fill")
             if let area = country.formattedArea() {
                 FactTile("Area", value: area, detail: country.landlocked == true ? "Landlocked" : "Coastline", systemImage: "square.dashed")
             }
@@ -135,8 +135,20 @@ struct CountryDetailView: View {
             }
             FactTile("Status", value: country.independent == true ? "Independent" : "Territory", detail: country.unMember == true ? "UN member" : "Not a UN member", systemImage: "checkmark.seal.fill")
             if let coordinate = country.coordinate {
-                FactTile("Centre", value: coordinate.description, detail: country.unRegionalGroup.map { $0.replacingOccurrences(of: " Group", with: "") }, systemImage: "location.fill")
+                FactTile("Centre", value: coordinate.description, detail: unGroup(country), systemImage: "location.fill")
             }
+        }
+    }
+
+    /// The country's UN regional group, short enough for a tile.
+    private func unGroup(_ country: Country) -> String? {
+        switch country.unRegionalGroup {
+        case "Western European and Others Group": return "UN group: WEOG"
+        case "Latin American and Caribbean Group": return "UN group: GRULAC"
+        case "Asia and the Pacific Group": return "UN group: Asia-Pacific"
+        case "Eastern European Group": return "UN group: Eastern Europe"
+        case "African Group": return "UN group: Africa"
+        default: return nil
         }
     }
 

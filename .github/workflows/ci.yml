@@ -17,13 +17,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: REST Countries reachability
+        env:
+          RC_KEY: ${{ secrets.RESTCOUNTRIES_API_KEY }}
         run: |
-          for path in "region/europe?fields=name,cca3,flags" "alpha/TUR?fields=name,borders" "all?fields=name,cca3"; do
-            echo "== https://restcountries.com/v3.1/$path"
-            curl -sS -m 30 -D - -o body.txt "https://restcountries.com/v3.1/$path" || true
-            head -c 400 body.txt || true
+          if [ -n "$RC_KEY" ]; then echo "RESTCOUNTRIES_API_KEY is set"; else echo "RESTCOUNTRIES_API_KEY is not set"; fi
+          base=https://api.restcountries.com/countries/v5
+          for path in "codes.alpha_3/TUR" "?region=Europe&limit=100&response_fields=names.common,codes.alpha_3,flag.url_png,region,subregion" "borders/TUR?response_fields=names.common,codes.alpha_3" "?limit=3"; do
+            echo "== $base/$path (demo key)"
+            curl -sS -m 30 -D - -o body.txt -H "Authorization: Bearer rc_live_demo" "$base/$path" || true
+            head -c 3000 body.txt || true
             echo
           done
+          echo "== flags CDN"
+          curl -sS -m 30 -o /dev/null -w "%{http_code} %{content_type} %{size_download}\n" https://flags.restcountries.com/v5/w320/tr.png || true
+          curl -sS -m 30 -o /dev/null -w "%{http_code} %{content_type} %{size_download}\n" https://flagcdn.com/w320/tr.png || true
           rm -f body.txt
       - name: Toolchain
         run: |

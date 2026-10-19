@@ -183,6 +183,20 @@ struct ClientTests {
         }
     }
 
+    @Test func errorsArrayWithSuccessStatusThrows() async throws {
+        let stub = StubbedClient { _ in .raw(#"{"success":false,"data":null,"errors":[{"message":"This API version has been deprecated."}]}"#) }
+        do {
+            _ = try await stub.client.country(code: "TUR")
+            Issue.record("Expected an HTTP error")
+        } catch let error as CountriesError {
+            guard case let .http(_, message, _) = error else {
+                Issue.record("Expected http")
+                return
+            }
+            #expect(message == "This API version has been deprecated.")
+        }
+    }
+
     @Test func undecodableBody() async throws {
         let stub = StubbedClient { _ in .raw("not json") }
         do {

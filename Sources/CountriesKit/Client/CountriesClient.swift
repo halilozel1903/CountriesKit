@@ -203,14 +203,20 @@ public struct CountriesClient: Sendable {
     }
 
     /// The countries in a successful response: an array, or the single object `/alpha/{code}`
-    /// answers with `fields`. A body that is the API's error object (`{"status":…,"message":…}`)
-    /// throws ``CountriesError/http(statusCode:message:url:)`` instead of passing for an empty
-    /// country, since every `Country` field is optional.
+    /// answers with `fields`. A body that is an error object instead (`{"status":…,"message":…}`,
+    /// or `{"success":false,"errors":[{"message":…}]}` as the deprecation notice the v3.1 URLs
+    /// now redirect to) throws ``CountriesError/http(statusCode:message:url:)`` instead of
+    /// passing for an empty country, since every `Country` field is optional.
     func countries(from body: Data, url: URL) throws -> [Country] {
-        if let object = try? JSONSerialization.jsonObject(with: body) as? [String: Any],
-           let message = object["message"] {
+        if let object = try? JSONSerialization.jsonObject(with: body) as? [String: Any] {
             let status = (object["status"] as? NSNumber)?.intValue ?? 200
-            throw CountriesError.http(statusCode: status, message: (message as? String) ?? String(describing: message), url: url)
+            if let message = object["message"] {
+                throw CountriesError.http(statusCode: status, message: (message as? String) ?? String(describing: message), url: url)
+            }
+            if let errors = object["errors"] as? [[String: Any]] {
+                let message = errors.compactMap { $0["message"] as? String }.joined(separator: " ")
+                throw CountriesError.http(statusCode: status, message: message.isEmpty ? nil : message, url: url)
+            }
         }
         return try decode(OneOrMany<Country>.self, from: body).items
     }

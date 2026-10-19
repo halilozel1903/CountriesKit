@@ -125,7 +125,7 @@ struct CountryDetailView: View {
         return LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
             FactTile("Capital", value: country.primaryCapital ?? "None", detail: otherCapitals(country) ?? country.flagEmoji.map { $0 + " " + country.commonName }, systemImage: "building.columns.fill")
             if let area = country.formattedArea() {
-                FactTile("Area", value: area, detail: country.landlocked == true ? "Landlocked" : "Coastline", systemImage: "square.dashed")
+                FactTile("Area", value: area, detail: country.landlocked == true ? "Landlocked" : (country.landlocked == false ? "Has coastline" : nil), systemImage: "square.dashed")
             }
             if let callingCode = country.primaryCallingCode {
                 FactTile("Calling code", value: callingCode, detail: country.tld?.joined(separator: " "), systemImage: "phone.fill")

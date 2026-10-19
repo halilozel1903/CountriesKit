@@ -35,6 +35,7 @@ struct QuizView: View {
                             next: { index += 1 }
                         )
                         .padding(16)
+                        .padding(.bottom, 24)
                         .frame(maxWidth: 560)
                         .frame(maxWidth: .infinity)
                     }
@@ -98,7 +99,7 @@ struct QuestionCard: View {
     let next: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack {
                 Text("Flag " + String(question.number) + " of " + String(total))
                     .font(.subheadline.weight(.semibold))
@@ -112,9 +113,9 @@ struct QuestionCard: View {
                 .tint(Theme.gold)
 
             FlagImage(url: question.answer.flagURL, emoji: nil, label: "The flag to name", cornerRadius: 12)
-                .frame(height: 200)
+                .frame(height: 160)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 18)
+                .padding(.vertical, 12)
                 .cardBackground()
 
             Text("Which country does this flag belong to?")
@@ -209,7 +210,7 @@ struct OptionButton: View {
             }
             .foregroundStyle(foreground)
             .padding(.horizontal, 16)
-            .padding(.vertical, 14)
+            .padding(.vertical, 12)
             .background(background, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)

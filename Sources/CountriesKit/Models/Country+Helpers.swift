@@ -1,7 +1,7 @@
 import Foundation
 
 extension Country {
-    /// The common name, such as `Germany`; the code when names were not requested.
+    /// The common name, such as `Germany`; the code when the name is missing.
     public var commonName: String {
         name?.common ?? cca3 ?? cca2 ?? ""
     }
@@ -11,13 +11,12 @@ extension Country {
         name?.official ?? commonName
     }
 
-    /// Every code the country has: cca2, cca3, ccn3 and cioc, when sent.
+    /// Every code the country has: cca2, cca3, ccn3 and cioc, when known.
     public var codes: [String] {
         [cca2, cca3, ccn3, cioc].compactMap { $0 }.filter { !$0.isEmpty }
     }
 
-    /// The flag emoji: the API's `flag` field, or one made from `cca2` when that field was not
-    /// requested.
+    /// The flag emoji: the dataset's `flag` field, or one made from `cca2` when it is missing.
     public var flagEmoji: String? {
         if let flag, !flag.isEmpty {
             return flag
@@ -25,14 +24,20 @@ extension Country {
         return cca2.flatMap { FlagEmoji.emoji(forRegionCode: $0) }
     }
 
-    /// The flag PNG (320 points wide on flagcdn.com).
+    /// The flag PNG on flagcdn.com, 320 pixels wide, looked up by ``cca2``.
     public var flagURL: URL? {
-        flags?.png
+        flagPNGURL(width: 320)
     }
 
-    /// A description of the flag for VoiceOver, when the API has one.
-    public var flagDescription: String? {
-        flags?.alt
+    /// The flag PNG on flagcdn.com in the closest available width at or above `width`
+    /// (20 to 2560 pixels). See ``FlagCDN``.
+    public func flagPNGURL(width: Int) -> URL? {
+        cca2.flatMap { FlagCDN.pngURL(regionCode: $0, width: width) }
+    }
+
+    /// The flag as an SVG on flagcdn.com.
+    public var flagSVGURL: URL? {
+        cca2.flatMap { FlagCDN.svgURL(regionCode: $0) }
     }
 
     /// The first capital, such as `Ankara`.
@@ -48,11 +53,6 @@ extension Country {
     /// The country's position (its rough centre).
     public var coordinate: Coordinate? {
         Coordinate(latlng)
-    }
-
-    /// The capital's position.
-    public var capitalCoordinate: Coordinate? {
-        capitalInfo?.coordinate
     }
 
     /// The name in each official language, sorted by language code.
@@ -83,18 +83,6 @@ extension Country {
             .sorted { ($0.name, $0.code) < ($1.name, $1.code) }
     }
 
-    /// The most recent Gini index.
-    public var latestGini: GiniIndex? {
-        (gini ?? [:])
-            .compactMap { entry in Int(entry.key).map { GiniIndex(year: $0, value: entry.value) } }
-            .max { $0.year < $1.year }
-    }
-
-    /// The side of the road traffic drives on.
-    public var drivingSide: DrivingSide? {
-        car?.side
-    }
-
     /// Full calling codes: `["+90"]` for Türkiye, one per area code for countries that share a
     /// root (`+1201`, `+1202`… for the United States).
     public var callingCodes: [String] {
@@ -109,12 +97,6 @@ extension Country {
         guard let root = idd?.root, !root.isEmpty else { return nil }
         let suffixes = (idd?.suffixes ?? []).filter { !$0.isEmpty }
         return suffixes.count == 1 ? root + suffixes[0] : root
-    }
-
-    /// People per square kilometre; `nil` without population or a positive area.
-    public var populationDensity: Double? {
-        guard let population, let area, area > 0 else { return nil }
-        return Double(population) / area
     }
 
     /// What the people are called in English, such as `Turkish`.
@@ -178,15 +160,4 @@ public struct LocalizedCountryName: Hashable, Sendable, Identifiable {
     }
 
     public var id: String { languageCode }
-}
-
-/// A World Bank Gini index for one year.
-public struct GiniIndex: Hashable, Sendable {
-    public var year: Int
-    public var value: Double
-
-    public init(year: Int, value: Double) {
-        self.year = year
-        self.value = value
-    }
 }

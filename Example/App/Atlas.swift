@@ -2,18 +2,19 @@ import Foundation
 import Observation
 import CountriesKit
 
-/// The app's data, all from one `CountriesClient` on the live REST Countries API: the countries
-/// of each region, full country pages with their borders, and the countries of the flag quiz.
+/// The app's data, all from one `CountriesClient`: the mledoze/countries dataset, downloaded live
+/// once and kept in memory. It holds the countries of each region, full country pages with their
+/// borders, and the countries of the flag quiz.
 @Observable
 @MainActor
 final class Atlas {
     let client: CountriesClient
 
-    /// The countries of each loaded region, with the list fields only.
+    /// The countries of each loaded region.
     private(set) var regions: [Region: [Country]] = [:]
     private(set) var regionErrors: [Region: String] = [:]
 
-    /// The quiz countries (every independent country, with the quiz fields).
+    /// The quiz countries (every country; the quiz keeps the independent ones).
     private(set) var quizCountries: [Country]?
     private(set) var quizError: String?
 
@@ -27,8 +28,8 @@ final class Atlas {
         self.attempts = max(1, attempts)
     }
 
-    /// The live API. Screenshot scenes retry failed requests a few times, since a capture must not
-    /// show an error.
+    /// The live dataset. Screenshot scenes retry a failed download a few times, since a capture
+    /// must not show an error.
     static func make(for scene: ScreenshotScene?) -> Atlas {
         Atlas(client: .shared, attempts: scene == nil ? 2 : 4)
     }
@@ -60,7 +61,7 @@ final class Atlas {
         do {
             let client = self.client
             let countries = try await Self.retrying(attempts: attempts) {
-                try await client.countries(in: region, fields: CountryField.listing)
+                try await client.countries(in: region)
             }
             regions[region] = countries.sortedByName()
             screenshotLog("Loaded \(countries.count) countries of \(region.name)")
@@ -83,7 +84,7 @@ final class Atlas {
 
     // MARK: - Country pages
 
-    /// Every field of one country.
+    /// One country.
     func country(code: String) async throws -> Country {
         if let cached = details[code] {
             return cached
@@ -103,7 +104,7 @@ final class Atlas {
         }
         let client = self.client
         let found = try await Self.retrying(attempts: attempts) {
-            try await client.borders(of: country, fields: CountryField.compact)
+            try await client.borders(of: country)
         }
         borders[country.id] = found
         return found
@@ -118,7 +119,7 @@ final class Atlas {
         do {
             let client = self.client
             let countries = try await Self.retrying(attempts: attempts) {
-                try await client.all(fields: CountryField.quiz)
+                try await client.all()
             }
             quizCountries = countries
             screenshotLog("Loaded \(countries.count) quiz countries")

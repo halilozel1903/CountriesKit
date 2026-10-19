@@ -6,9 +6,9 @@ import CountriesUI
 /// Scenes used by CI to capture the README screenshots on iPhone and iPad.
 /// Launch with `-screenshot <scene>`; normal launches are unaffected.
 ///
-/// Every scene loads real data and the real flag PNGs from the live APIs (restcountries.com for
-/// the data, flagcdn.com for the flags it links to). Nothing is bundled and nothing falls back:
-/// when a request or a flag fails, the scene never reports ready and CI fails.
+/// Every scene loads real data and the real flag PNGs live: the mledoze/countries dataset from
+/// jsDelivr and the flags from flagcdn.com. Nothing is bundled and nothing falls back: when the
+/// download or a flag fails, the scene never reports ready and CI fails.
 enum ScreenshotScene: String {
     /// iPhone: the countries of Europe, grouped by subregion.
     case countries

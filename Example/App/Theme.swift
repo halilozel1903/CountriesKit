@@ -165,7 +165,7 @@ struct FlowLayout: Layout {
 /// The data credit shown under lists. Verbatim, so the domain is not turned into a link.
 struct DataCredit: View {
     var body: some View {
-        Text(verbatim: "Data from restcountries.com · flags from flagcdn.com")
+        Text(verbatim: "Data from mledoze/countries · flags from flagcdn.com")
             .font(.footnote)
             .foregroundStyle(Color.secondary)
             .multilineTextAlignment(.center)

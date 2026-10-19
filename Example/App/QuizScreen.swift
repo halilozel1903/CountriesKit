@@ -148,7 +148,7 @@ struct QuestionCard: View {
 
     private func feedback(correct: Bool) -> some View {
         let answer = question.answer
-        let details = [answer.primaryCapital.map { "Capital " + $0 }, answer.subregion, answer.formattedPopulation().map { $0 + " people" }]
+        let details = [answer.primaryCapital.map { "Capital " + $0 }, answer.subregion, answer.formattedArea(.compact)]
             .compactMap { $0 }
             .joined(separator: " · ")
         return VStack(alignment: .leading, spacing: 12) {

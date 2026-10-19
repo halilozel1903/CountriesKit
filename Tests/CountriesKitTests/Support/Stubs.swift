@@ -1,7 +1,8 @@
 import Foundation
 @testable import CountriesKit
 
-/// Recorded JSON responses in `Fixtures/`, hand-written in the API's exact shapes.
+/// `Fixtures/countries.json`: 28 real records copied from the mledoze/countries dataset
+/// (translations trimmed to four languages).
 enum Fixture {
     struct Missing: Error {
         let name: String
@@ -116,60 +117,44 @@ final class StubRegistry: @unchecked Sendable {
     }
 }
 
+/// A thread-safe counter for stub handlers.
+final class Counter: @unchecked Sendable {
+    private let lock = NSLock()
+    private var value = 0
+
+    /// Adds one and returns the new value.
+    func next() -> Int {
+        lock.withLock {
+            value += 1
+            return value
+        }
+    }
+}
+
 /// A client wired to the stub, on a host of its own.
 struct StubbedClient {
     let host: String
     let client: CountriesClient
 
-    init(handler: @escaping StubHandler) {
-        host = "stub-" + UUID().uuidString.lowercased() + ".restcountries.test"
+    init(cacheLifetime: TimeInterval = 3600, handler: @escaping StubHandler) {
+        host = "stub-" + UUID().uuidString.lowercased() + ".countries.test"
         StubRegistry.shared.register(handler, for: host)
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [StubURLProtocol.self]
         client = CountriesClient(configuration: CountriesConfiguration(
-            baseURL: URL(string: "https://" + host + "/v3.1")!,
-            session: URLSession(configuration: configuration)
+            datasetURL: URL(string: "https://" + host + "/mledoze/countries.json")!,
+            session: URLSession(configuration: configuration),
+            cacheLifetime: cacheLifetime
         ))
+    }
+
+    /// A client that answers with the fixture.
+    static func dataset(cacheLifetime: TimeInterval = 3600) -> StubbedClient {
+        StubbedClient(cacheLifetime: cacheLifetime) { _ in try .json("countries") }
     }
 
     /// Every request the client sent, in order.
     var requests: [URLRequest] {
         StubRegistry.shared.requests(for: host)
-    }
-
-    /// Every request's path, in order.
-    var paths: [String] {
-        requests.compactMap { $0.url?.path }
-    }
-
-    /// The last request's path.
-    var lastPath: String? {
-        requests.last?.url?.path
-    }
-
-    /// The last request's query items, decoded.
-    var lastQuery: [URLQueryItem] {
-        guard let url = requests.last?.url,
-              let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        else { return [] }
-        return components.queryItems ?? []
-    }
-
-    /// The value of a query item of the last request.
-    func lastQueryValue(_ name: String) -> String? {
-        lastQuery.first(where: { $0.name == name })?.value
-    }
-}
-
-extension URLRequest {
-    /// The value of a query item.
-    func queryValue(_ name: String) -> String? {
-        guard let url, let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return nil }
-        return components.queryItems?.first(where: { $0.name == name })?.value
-    }
-
-    /// The last path component, such as `"TUR"` for `/v3.1/alpha/TUR`.
-    var lastPathComponent: String? {
-        url?.lastPathComponent
     }
 }

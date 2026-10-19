@@ -1,6 +1,6 @@
 import Foundation
 
-/// The regions REST Countries groups countries in, as its `region` field spells them.
+/// The regions the dataset groups countries in, as its `region` field spells them.
 public enum Region: String, CaseIterable, Codable, Hashable, Sendable, Identifiable {
     case africa = "Africa"
     case americas = "Americas"
@@ -13,9 +13,6 @@ public enum Region: String, CaseIterable, Codable, Hashable, Sendable, Identifia
 
     /// The display name, such as `Europe`.
     public var name: String { rawValue }
-
-    /// The path segment for `/region/{region}`.
-    var pathValue: String { rawValue.lowercased() }
 
     /// The region named `name`, ignoring case.
     public init?(named name: String) {
@@ -37,7 +34,7 @@ public struct Coordinate: Hashable, Sendable, CustomStringConvertible {
         self.longitude = longitude
     }
 
-    /// From the API's `[latitude, longitude]`; `nil` unless there are two numbers.
+    /// From the dataset's `[latitude, longitude]`; `nil` unless there are two numbers.
     public init?(_ latlng: [Double]?) {
         guard let latlng, latlng.count >= 2 else { return nil }
         self.init(latitude: latlng[0], longitude: latlng[1])

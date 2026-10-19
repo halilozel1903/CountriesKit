@@ -5,7 +5,7 @@ import Testing
 @Suite("Flag quiz")
 struct QuizTests {
     private func countries() throws -> [Country] {
-        try Fixture.decode([Country].self, from: "all-quiz")
+        try Fixture.decode([Country].self, from: "countries")
     }
 
     @Test func splitMix64() {
@@ -55,34 +55,34 @@ struct QuizTests {
 
     @Test func wrongAnswersComeFromTheSameRegion() throws {
         let pool = try countries()
-        let quiz = FlagQuiz(countries: pool, questionCount: 19, seed: 99)
+        let quiz = FlagQuiz(countries: pool, questionCount: 28, seed: 99)
 
         for question in quiz.questions where question.answer.region == "Europe" || question.answer.region == "Asia" {
             #expect(question.options.allSatisfy { $0.region == question.answer.region })
         }
-        let mixed = FlagQuiz(countries: pool, questionCount: 19, seed: 99, sameRegionOptions: false)
-        #expect(mixed.questions.count == 19)
+        let mixed = FlagQuiz(countries: pool, questionCount: 28, seed: 99, sameRegionOptions: false)
+        #expect(mixed.questions.count == 28)
     }
 
     @Test func ineligibleCountriesAreLeftOut() throws {
         let pool = try countries()
-        let eligible = FlagQuiz.eligible(pool + pool)
+        let eligible = FlagQuiz.eligible(pool + pool + [Country(cca3: "XXX"), Country(name: CountryName(common: "No code", official: "No code"))])
 
-        #expect(eligible.count == 19)
+        #expect(eligible.count == 28)
         #expect(!eligible.contains { $0.id == "XXX" })
         #expect(eligible.map(\.id) == eligible.map(\.id).sorted())
 
         let independent = FlagQuiz(countries: pool, questionCount: 50, seed: 1, independentOnly: true)
-        #expect(independent.questions.count == 18)
+        #expect(independent.questions.count == 24)
         #expect(!independent.questions.contains { $0.answer.id == "ALA" })
     }
 
     @Test func smallPools() {
-        let one = [Country(name: CountryName(common: "Only", official: "Only"), cca3: "ONE", flags: ImageLinks(png: URL(string: "https://flagcdn.com/w320/on.png")))]
+        let one = [Country(name: CountryName(common: "Only", official: "Only"), cca2: "ON", cca3: "ONE")]
         #expect(FlagQuiz(countries: one, seed: 1).questions.isEmpty)
         #expect(FlagQuiz(countries: [], seed: 1).questions.isEmpty)
 
-        let two = one + [Country(name: CountryName(common: "Other", official: "Other"), cca3: "TWO", flags: ImageLinks(png: URL(string: "https://flagcdn.com/w320/tw.png")))]
+        let two = one + [Country(name: CountryName(common: "Other", official: "Other"), cca2: "TW", cca3: "TWO")]
         let quiz = FlagQuiz(countries: two, questionCount: 5, optionCount: 4, seed: 1)
         #expect(quiz.questions.count == 2)
         #expect(quiz.questions.allSatisfy { $0.options.count == 2 })

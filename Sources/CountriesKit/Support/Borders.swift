@@ -1,9 +1,8 @@
 import Foundation
 
 extension Country {
-    /// The neighbours of this country found in `countries`, in the order of ``borders``. Use it
-    /// when you already hold every country (for example from `/all`) and want no request; the
-    /// client's ``CountriesClient/borders(of:fields:)`` loads them instead.
+    /// The neighbours of this country found in `countries`, in the order of ``borders``. The
+    /// client's ``CountriesClient/borders(of:)`` does the same with the whole dataset.
     public func borderCountries(in countries: some Sequence<Country>) -> [Country] {
         guard let borders, !borders.isEmpty else { return [] }
         let index = countries.indexedByCode()
@@ -82,8 +81,8 @@ extension Sequence where Element == Country {
         }
     }
 
-    /// The sum of every population that is known.
-    public var totalPopulation: Int {
-        reduce(0) { $0 + ($1.population ?? 0) }
+    /// The sum of every known area, in square kilometres.
+    public var totalArea: Double {
+        reduce(0) { $0 + max(0, $1.area ?? 0) }
     }
 }

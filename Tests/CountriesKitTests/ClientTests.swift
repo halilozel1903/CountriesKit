@@ -2,265 +2,192 @@ import Foundation
 import Testing
 @testable import CountriesKit
 
-@Suite("CountriesClient requests")
+@Suite("CountriesClient")
 struct ClientTests {
-    @Test func countryByCode() async throws {
-        let stub = StubbedClient { _ in try .json("alpha-tur") }
-        let turkey = try await stub.client.country(code: "TUR")
+    // MARK: - Loading and caching
 
-        #expect(turkey.cca3 == "TUR")
-        #expect(turkey.primaryCapital == "Ankara")
-        #expect(stub.lastPath == "/v3.1/alpha/TUR")
-        #expect(stub.lastQuery.isEmpty)
-    }
+    @Test func loadsTheDatasetOnce() async throws {
+        let stub = StubbedClient.dataset()
+        let all = try await stub.client.all()
+        _ = try await stub.client.country(code: "TUR")
+        _ = try await stub.client.countries(in: .europe)
 
-    @Test func headers() async throws {
-        let stub = StubbedClient { _ in try .json("alpha-tur") }
-        _ = try await stub.client.country(code: "tr")
-
-        let request = try #require(stub.requests.last)
+        #expect(all.count == 28)
+        #expect(stub.requests.count == 1)
+        let request = try #require(stub.requests.first)
+        #expect(request.url?.path == "/mledoze/countries.json")
         #expect(request.httpMethod == "GET")
         #expect(request.value(forHTTPHeaderField: "Accept") == "application/json")
-        let agent = request.value(forHTTPHeaderField: "User-Agent") ?? ""
-        #expect(agent.hasPrefix("CountriesKit"))
+        #expect(request.value(forHTTPHeaderField: "User-Agent")?.hasPrefix("CountriesKit") == true)
     }
 
-    @Test func singleObjectWithFields() async throws {
-        let stub = StubbedClient { _ in try .json("alpha-tur-fields") }
-        let turkey = try await stub.client.country(code: "TUR", fields: [.name, .cca3, .flags, .population, .name])
+    @Test func concurrentCallsShareOneDownload() async throws {
+        let stub = StubbedClient.dataset()
+        async let one = stub.client.all()
+        async let two = stub.client.country(code: "DEU")
+        async let three = stub.client.countries(in: .asia)
+        let (all, germany, asia) = try await (one, two, three)
 
-        #expect(turkey.commonName == "Turkey")
-        #expect(turkey.population == 84_339_067)
-        #expect(turkey.capital == nil)
-        #expect(stub.lastQueryValue("fields") == "name,cca3,flags,population")
-    }
-
-    @Test func allNeedsFields() async throws {
-        let stub = StubbedClient { _ in try .json("all-quiz") }
-
-        await #expect(throws: CountriesError.self) {
-            _ = try await stub.client.all(fields: [])
-        }
-        let tooMany = Array(CountryField.allCases.prefix(11))
-        await #expect(throws: CountriesError.self) {
-            _ = try await stub.client.all(fields: tooMany)
-        }
-        #expect(stub.requests.isEmpty)
-    }
-
-    @Test func allSendsFields() async throws {
-        let stub = StubbedClient { _ in try .json("all-quiz") }
-        let countries = try await stub.client.all(fields: [.name, .flags, .name, .cca3])
-
-        #expect(countries.count == 20)
-        #expect(stub.lastPath == "/v3.1/all")
-        #expect(stub.lastQueryValue("fields") == "name,flags,cca3")
-    }
-
-    @Test func listingFieldsFitAll() async throws {
-        let stub = StubbedClient { _ in try .json("region-europe") }
-        _ = try await stub.client.all(fields: CountryField.listing)
-
-        #expect(CountryField.listing.count <= CountriesClient.maxFieldsForAll)
-        #expect(CountryField.quiz.count <= CountriesClient.maxFieldsForAll)
+        #expect(all.count == 28)
+        #expect(germany.id == "DEU")
+        #expect(asia.count == 8)
         #expect(stub.requests.count == 1)
     }
 
-    @Test func region() async throws {
-        let stub = StubbedClient { _ in try .json("region-europe") }
-        let europe = try await stub.client.countries(in: .europe, fields: CountryField.listing)
+    @Test func reloadAndExpiryDownloadAgain() async throws {
+        let stub = StubbedClient.dataset()
+        _ = try await stub.client.all()
+        try await stub.client.reload()
+        #expect(stub.requests.count == 2)
 
-        #expect(europe.count == 6)
-        #expect(stub.lastPath == "/v3.1/region/europe")
-        #expect(stub.lastQueryValue("fields") == "name,cca2,cca3,flags,flag,capital,population,region,subregion,area")
+        let expiring = StubbedClient.dataset(cacheLifetime: 0)
+        _ = try await expiring.client.all()
+        _ = try await expiring.client.all()
+        #expect(expiring.requests.count == 2)
     }
 
-    @Test func searchEndpoints() async throws {
-        let stub = StubbedClient { _ in try .json("region-europe") }
-
-        _ = try await stub.client.countries(currency: "EUR")
-        #expect(stub.lastPath == "/v3.1/currency/EUR")
-        _ = try await stub.client.countries(language: "tur")
-        #expect(stub.lastPath == "/v3.1/lang/tur")
-        _ = try await stub.client.countries(subregion: "Western Asia")
-        #expect(stub.lastPath == "/v3.1/subregion/Western Asia")
-        _ = try await stub.client.countries(capital: "Ankara")
-        #expect(stub.lastPath == "/v3.1/capital/Ankara")
-        _ = try await stub.client.countries(demonym: "peruvian")
-        #expect(stub.lastPath == "/v3.1/demonym/peruvian")
-        _ = try await stub.client.countries(translation: "Alemania")
-        #expect(stub.lastPath == "/v3.1/translation/Alemania")
-        _ = try await stub.client.independentCountries(false, fields: [.name])
-        #expect(stub.lastPath == "/v3.1/independent")
-        #expect(stub.lastQueryValue("status") == "false")
-        #expect(stub.lastQueryValue("fields") == "name")
-        #expect(stub.requests.count == 7)
-    }
-
-    @Test func nameSearchIsEncoded() async throws {
-        let stub = StubbedClient { _ in try .json("region-europe") }
-        _ = try await stub.client.countries(named: " united states ", fullText: true)
-
-        let url = try #require(stub.requests.last?.url)
-        #expect(url.absoluteString.contains("/v3.1/name/united%20states?"))
-        #expect(stub.lastQueryValue("fullText") == "true")
-
-        _ = try await stub.client.countries(named: "a/b?c")
-        let encoded = try #require(stub.requests.last?.url)
-        #expect(encoded.absoluteString.hasSuffix("/v3.1/name/a%2Fb%3Fc"))
-    }
-
-    @Test func blankSearchSendsNothing() async throws {
-        let stub = StubbedClient { _ in try .json("region-europe") }
-        let found = try await stub.client.countries(named: "   ")
-
-        #expect(found.isEmpty)
-        #expect(stub.requests.isEmpty)
-    }
-
-    @Test func noMatchesIsEmpty() async throws {
-        let stub = StubbedClient { _ in try .json("error-not-found", status: 404) }
-        let found = try await stub.client.countries(named: "zzzz")
-
-        #expect(found.isEmpty)
-    }
-
-    @Test func unknownCodeThrowsNotFound() async throws {
-        let stub = StubbedClient { _ in try .json("error-not-found", status: 404) }
-        do {
-            _ = try await stub.client.country(code: "ZZZ")
-            Issue.record("Expected notFound")
-        } catch let error as CountriesError {
-            guard case let .notFound(url) = error else {
-                Issue.record("Expected notFound")
-                return
+    @Test func failuresAreNotCached() async throws {
+        let counter = Counter()
+        let stub = StubbedClient { _ in
+            if counter.next() == 1 {
+                return .status(503)
             }
-            #expect(url.path == "/v3.1/alpha/ZZZ")
+            return try .json("countries")
         }
-    }
-
-    @Test func httpErrorCarriesMessage() async throws {
-        let stub = StubbedClient { _ in try .json("error-bad-request", status: 400) }
         do {
-            _ = try await stub.client.countries(in: .asia)
+            _ = try await stub.client.all()
             Issue.record("Expected an HTTP error")
         } catch let error as CountriesError {
-            guard case let .http(status, message, _) = error else {
-                Issue.record("Expected http")
+            guard case let .http(status, url) = error else {
+                Issue.record("Expected http, got \(error)")
                 return
             }
-            #expect(status == 400)
-            #expect(message == "Bad Request")
-            #expect(error.errorDescription?.contains("400") == true)
+            #expect(status == 503)
+            #expect(url.lastPathComponent == "countries.json")
+            #expect(error.errorDescription?.contains("503") == true)
         }
+        let all = try await stub.client.all()
+        #expect(all.count == 28)
+        #expect(stub.requests.count == 2)
     }
 
     @Test func transportErrors() async throws {
-        let stub = StubbedClient { _ in throw URLError(.badServerResponse) }
+        let stub = StubbedClient { _ in throw URLError(.notConnectedToInternet) }
         do {
             _ = try await stub.client.country(code: "TUR")
             Issue.record("Expected a transport error")
         } catch let error as CountriesError {
             guard case .transport = error else {
-                Issue.record("Expected transport")
+                Issue.record("Expected transport, got \(error)")
                 return
             }
         }
     }
 
-    @Test func errorObjectWithSuccessStatusThrows() async throws {
-        let stub = StubbedClient { _ in .raw(#"{"status":400,"message":"Bad Request"}"#) }
+    @Test func aBodyThatIsNotAListThrows() async throws {
+        // What the retired REST Countries v3.1 URLs answer now.
+        let notice = #"{"success":false,"data":null,"errors":[{"message":"This API version has been deprecated."}]}"#
+        let stub = StubbedClient { _ in .raw(notice) }
         do {
-            _ = try await stub.client.countries(in: .europe, fields: CountryField.listing)
-            Issue.record("Expected an HTTP error")
-        } catch let error as CountriesError {
-            guard case let .http(status, message, _) = error else {
-                Issue.record("Expected http")
-                return
-            }
-            #expect(status == 400)
-            #expect(message == "Bad Request")
-        }
-    }
-
-    @Test func errorsArrayWithSuccessStatusThrows() async throws {
-        let stub = StubbedClient { _ in .raw(#"{"success":false,"data":null,"errors":[{"message":"This API version has been deprecated."}]}"#) }
-        do {
-            _ = try await stub.client.country(code: "TUR")
-            Issue.record("Expected an HTTP error")
-        } catch let error as CountriesError {
-            guard case let .http(_, message, _) = error else {
-                Issue.record("Expected http")
-                return
-            }
-            #expect(message == "This API version has been deprecated.")
-        }
-    }
-
-    @Test func undecodableBody() async throws {
-        let stub = StubbedClient { _ in .raw("not json") }
-        do {
-            _ = try await stub.client.countries(in: .asia)
+            _ = try await stub.client.countries(in: .europe)
             Issue.record("Expected a decoding error")
         } catch let error as CountriesError {
-            guard case .decoding = error else {
-                Issue.record("Expected decoding")
+            guard case let .decoding(description) = error else {
+                Issue.record("Expected decoding, got \(error)")
                 return
             }
+            #expect(description.contains("deprecated"))
+        }
+
+        let garbage = StubbedClient { _ in .raw("not json") }
+        await #expect(throws: CountriesError.self) {
+            _ = try await garbage.client.all()
         }
     }
 
-    @Test func bordersKeepTheirOrder() async throws {
-        let stub = StubbedClient { request in
-            try request.url?.path == "/v3.1/alpha/TUR" ? .json("alpha-tur") : .json("alpha-codes-tur-borders")
+    // MARK: - Lookups
+
+    @Test func countryByAnyCode() async throws {
+        let stub = StubbedClient.dataset()
+
+        #expect(try await stub.client.country(code: "TUR").commonName == "Türkiye")
+        #expect(try await stub.client.country(code: " tr ").id == "TUR")
+        #expect(try await stub.client.country(code: "792").id == "TUR")
+        #expect(try await stub.client.country(code: "XK").commonName == "Kosovo")
+        #expect(try await stub.client.country(code: "kos").id == "UNK")
+    }
+
+    @Test func unknownAndBlankCodes() async throws {
+        let stub = StubbedClient.dataset()
+        do {
+            _ = try await stub.client.country(code: "zzz")
+            Issue.record("Expected notFound")
+        } catch let error as CountriesError {
+            #expect(error == .notFound(code: "ZZZ"))
         }
+        await #expect(throws: CountriesError.self) {
+            _ = try await stub.client.country(code: "  ")
+        }
+    }
+
+    @Test func codesKeepTheirOrder() async throws {
+        let stub = StubbedClient.dataset()
+        let found = try await stub.client.countries(codes: ["DEU", "fr", "380", "DEU", "ZZ", "276", " "])
+
+        let expected: [String] = ["DEU", "FRA", "ITA"]
+        #expect(found.map(\.id) == expected)
+        #expect(try await stub.client.countries(codes: []).isEmpty)
+    }
+
+    @Test func nameSearch() async throws {
+        let stub = StubbedClient.dataset()
+
+        let expectedUnited: [String] = ["MEX", "USA"]
+        #expect(try await stub.client.countries(named: "united").map(\.id) == expectedUnited)
+        #expect(try await stub.client.countries(named: "turk").map(\.id) == ["TUR"])
+        #expect(try await stub.client.countries(named: "Türkiye Cumhuriyeti").map(\.id) == ["TUR"])
+        #expect(try await stub.client.countries(named: "germany", fullText: true).map(\.id) == ["DEU"])
+        #expect(try await stub.client.countries(named: "germ", fullText: true).isEmpty)
+        #expect(try await stub.client.countries(named: "zzzz").isEmpty)
+        #expect(try await stub.client.countries(named: " ").isEmpty)
+    }
+
+    @Test func searches() async throws {
+        let stub = StubbedClient.dataset()
+        let client = stub.client
+
+        let euro: [String] = ["ALA", "BGR", "DEU", "ESP", "FRA", "GRC", "ITA", "UNK", "VAT"]
+        #expect(try await client.countries(currency: "eur").map(\.id) == euro)
+        #expect(try await client.countries(currency: "Euro").map(\.id) == euro)
+        let spanish: [String] = ["ESP", "MEX", "PER"]
+        #expect(try await client.countries(language: "spa").map(\.id) == spanish)
+        #expect(try await client.countries(language: "Spanish").map(\.id) == spanish)
+        let westernAsia: [String] = ["ARM", "AZE", "GEO", "IRQ", "SYR", "TUR"]
+        #expect(try await client.countries(subregion: "western asia").map(\.id) == westernAsia)
+        let ber: [String] = ["AUS", "CHE", "DEU"]
+        #expect(try await client.countries(capital: "ber").map(\.id) == ber)
+        #expect(try await client.countries(demonym: "peruvian").map(\.id) == ["PER"])
+        #expect(try await client.countries(translation: "Alemania").map(\.id) == ["DEU"])
+        #expect(try await client.countries(in: .europe).count == 12)
+        #expect(try await client.countries(in: .antarctic).map(\.id) == ["ATA"])
+        #expect(try await client.independentCountries().count == 24)
+        let territories: [String] = ["ALA", "ATA", "GRL", "UNK"]
+        #expect(try await client.independentCountries(false).map(\.id) == territories)
+        #expect(stub.requests.count == 1)
+    }
+
+    @Test func borders() async throws {
+        let stub = StubbedClient.dataset()
         let turkey = try await stub.client.country(code: "TUR")
-        let neighbours = try await stub.client.borders(of: turkey, fields: CountryField.compact)
+        let neighbours = try await stub.client.borders(of: turkey)
 
-        let ids = neighbours.map(\.id)
         let expected: [String] = ["ARM", "AZE", "BGR", "GEO", "GRC", "IRN", "IRQ", "SYR"]
-        #expect(ids == expected)
-        #expect(stub.lastPath == "/v3.1/alpha")
-        #expect(stub.lastQueryValue("codes") == "ARM,AZE,BGR,GEO,GRC,IRN,IRQ,SYR")
-        #expect(stub.lastQueryValue("fields") == "name,cca2,cca3,flags,flag")
-    }
-
-    @Test func codesAreDeduplicatedAndOrdered() async throws {
-        let stub = StubbedClient { _ in try .json("alpha-codes-tur-borders") }
-        let found = try await stub.client.countries(codes: ["grc", "ARM", "GRC", " ", "ir"], fields: [.name])
-
-        let ids = found.prefix(3).map(\.id)
-        let expected: [String] = ["GRC", "ARM", "IRN"]
-        #expect(ids == expected)
-        #expect(stub.lastQueryValue("codes") == "GRC,ARM,IR")
-        // No code field was asked for, so cca3 is added to keep the order.
-        #expect(stub.lastQueryValue("fields") == "name,cca3")
-    }
-
-    @Test func longCodeListsAreSplit() async throws {
-        let stub = StubbedClient { _ in .raw("[]") }
-        let codes = (0..<120).map { "C" + String($0) }
-        let found = try await stub.client.countries(codes: codes)
-
-        #expect(found.isEmpty)
-        #expect(stub.requests.count == 3)
-    }
-
-    @Test func islandHasNoBorders() async throws {
-        let stub = StubbedClient { _ in .raw("[]") }
-        let iceland = Country(cca3: "ISL", borders: [])
-        let neighbours = try await stub.client.borders(of: iceland)
-
-        #expect(neighbours.isEmpty)
-        #expect(stub.requests.isEmpty)
-    }
-
-    @Test func customPath() async throws {
-        struct Named: Decodable { let name: CountryName }
-        let stub = StubbedClient { _ in try .json("region-europe") }
-        let names = try await stub.client.get(["region", "europe"], query: [URLQueryItem(name: "fields", value: "name")], as: [Named].self)
-
-        #expect(names.first?.name.common == "Germany")
-        #expect(stub.lastPath == "/v3.1/region/europe")
+        #expect(neighbours.map(\.id) == expected)
+        #expect(neighbours.allSatisfy { $0.flagURL != nil })
+        // A country without its borders is looked up first.
+        #expect(try await stub.client.borders(of: Country(cca3: "TUR")).map(\.id) == expected)
+        // An island.
+        #expect(try await stub.client.borders(of: stub.client.country(code: "ISL")).isEmpty)
+        #expect(stub.requests.count == 1)
     }
 }

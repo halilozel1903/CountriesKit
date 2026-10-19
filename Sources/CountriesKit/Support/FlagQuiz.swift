@@ -44,7 +44,7 @@ public struct SeededGenerator: RandomNumberGenerator, Sendable {
 /// quiz can be replayed, offered as a daily challenge (seed it with the date) or tested.
 ///
 /// ```swift
-/// let countries = try await api.all(fields: CountryField.quiz)
+/// let countries = try await api.all()
 /// let quiz = FlagQuiz(countries: countries, questionCount: 10, seed: 2026)
 /// let first = quiz.questions[0]
 /// first.answer.flagURL           // the flag to show
@@ -81,8 +81,8 @@ public struct FlagQuiz: Hashable, Sendable {
     /// Makes a quiz.
     ///
     /// - Parameters:
-    ///   - countries: The countries to ask about; each needs a name and a flag PNG. Load them
-    ///     with ``CountryField/quiz``.
+    ///   - countries: The countries to ask about; each needs a name and a `cca2` code for its
+    ///     flag PNG, as every country of ``CountriesClient/all()`` has.
     ///   - questionCount: Questions to ask; fewer when there are fewer countries.
     ///   - optionCount: Choices per question, the answer included (at least 2).
     ///   - seed: The seed for the order of questions and options.
@@ -128,7 +128,7 @@ public struct FlagQuiz: Hashable, Sendable {
     }
 
     /// The countries a quiz can use: with a name and a flag PNG, one per id, sorted by id so the
-    /// API's order does not change the quiz.
+    /// order they were loaded in does not change the quiz.
     public static func eligible(_ countries: [Country]) -> [Country] {
         var seen = Set<String>()
         return countries

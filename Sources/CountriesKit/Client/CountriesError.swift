@@ -2,42 +2,34 @@ import Foundation
 
 /// Errors thrown by ``CountriesClient``.
 public enum CountriesError: Error, Equatable, Sendable, LocalizedError {
-    /// Nothing matches (HTTP 404). Only thrown for single lookups such as
-    /// ``CountriesClient/country(code:fields:)``; searches answer an empty array instead.
-    case notFound(url: URL)
-    /// Any other unsuccessful HTTP status, with the API's `message` when it sent one.
-    case http(statusCode: Int, message: String?, url: URL)
-    /// The response was not JSON of the expected shape.
-    case decoding(type: String, description: String)
-    /// The request could not be completed (offline, timed out, cancelled…).
+    /// No country has this code. Only thrown by ``CountriesClient/country(code:)``; searches
+    /// answer an empty array instead.
+    case notFound(code: String)
+    /// The dataset could not be downloaded: the server answered with this HTTP status.
+    case http(statusCode: Int, url: URL)
+    /// The download was not a JSON list of countries.
+    case decoding(description: String)
+    /// The download could not be completed (offline, timed out, cancelled…).
     case transport(URLError)
     /// The response was not an HTTP response.
     case invalidResponse
-    /// The request was not sent because it could never succeed, for example `/all` without
-    /// fields.
+    /// The call could never succeed, for example a lookup by an empty code.
     case invalidRequest(String)
 
     public var errorDescription: String? {
         switch self {
-        case .notFound:
-            return "REST Countries has no country matching this request."
-        case let .http(statusCode, message, _):
-            return message.map { "REST Countries answered with HTTP status \(statusCode): \($0)" }
-                ?? "REST Countries answered with HTTP status \(statusCode)."
-        case let .decoding(type, _):
-            return "REST Countries sent data that could not be read as \(type)."
+        case let .notFound(code):
+            return "No country has the code \(code)."
+        case let .http(statusCode, url):
+            return "The country data at \(url.host ?? url.absoluteString) answered with HTTP status \(statusCode)."
+        case .decoding:
+            return "The country data could not be read."
         case let .transport(error):
             return error.localizedDescription
         case .invalidResponse:
-            return "REST Countries sent an invalid response."
+            return "The country data server sent an invalid response."
         case let .invalidRequest(reason):
             return reason
         }
     }
-}
-
-/// The body the API sends with an error status: `{"status":404,"message":"Not Found"}`.
-struct APIErrorBody: Decodable {
-    let message: String?
-    let status: Int?
 }

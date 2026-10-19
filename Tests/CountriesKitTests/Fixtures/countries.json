@@ -1,0 +1,2925 @@
+[
+ {
+  "name": {
+   "common": "Åland Islands",
+   "official": "Åland Islands",
+   "native": {
+    "swe": {
+     "official": "Landskapet Åland",
+     "common": "Åland"
+    }
+   }
+  },
+  "tld": [
+   ".ax"
+  ],
+  "cca2": "AX",
+  "ccn3": "248",
+  "cca3": "ALA",
+  "cioc": "",
+  "independent": false,
+  "status": "officially-assigned",
+  "unMember": false,
+  "unRegionalGroup": "",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "5818"
+   ]
+  },
+  "capital": [
+   "Mariehamn"
+  ],
+  "altSpellings": [
+   "AX",
+   "Aaland",
+   "Aland",
+   "Ahvenanmaa"
+  ],
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "languages": {
+   "swe": "Swedish"
+  },
+  "translations": {
+   "deu": {
+    "official": "Åland-Inseln",
+    "common": "Åland"
+   },
+   "fra": {
+    "official": "Ahvenanmaa",
+    "common": "Ahvenanmaa"
+   },
+   "jpn": {
+    "official": "オーランド諸島",
+    "common": "オーランド"
+   },
+   "spa": {
+    "official": "Islas Åland",
+    "common": "Alandia"
+   }
+  },
+  "latlng": [
+   60.116667,
+   19.9
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 1580,
+  "flag": "🇦🇽",
+  "demonyms": {
+   "eng": {
+    "f": "Ålandish",
+    "m": "Ålandish"
+   },
+   "fra": {
+    "f": "Ålandaise",
+    "m": "Ålandais"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Armenia",
+   "official": "Republic of Armenia",
+   "native": {
+    "hye": {
+     "official": "Հայաստանի Հանրապետություն",
+     "common": "Հայաստան"
+    }
+   }
+  },
+  "tld": [
+   ".am"
+  ],
+  "cca2": "AM",
+  "ccn3": "051",
+  "cca3": "ARM",
+  "cioc": "ARM",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Eastern European Group",
+  "currencies": {
+   "AMD": {
+    "name": "Armenian dram",
+    "symbol": "֏"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "74"
+   ]
+  },
+  "capital": [
+   "Yerevan"
+  ],
+  "altSpellings": [
+   "AM",
+   "Hayastan",
+   "Republic of Armenia",
+   "Հայաստանի Հանրապետություն"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "hye": "Armenian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Armenien",
+    "common": "Armenien"
+   },
+   "fra": {
+    "official": "République d'Arménie",
+    "common": "Arménie"
+   },
+   "jpn": {
+    "official": "アルメニア共和国",
+    "common": "アルメニア"
+   },
+   "spa": {
+    "official": "República de Armenia",
+    "common": "Armenia"
+   }
+  },
+  "latlng": [
+   40,
+   45
+  ],
+  "landlocked": true,
+  "borders": [
+   "AZE",
+   "GEO",
+   "IRN",
+   "TUR"
+  ],
+  "area": 29743,
+  "flag": "🇦🇲",
+  "demonyms": {
+   "eng": {
+    "f": "Armenian",
+    "m": "Armenian"
+   },
+   "fra": {
+    "f": "Arménienne",
+    "m": "Arménien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Antarctica",
+   "official": "Antarctica",
+   "native": {}
+  },
+  "tld": [
+   ".aq"
+  ],
+  "cca2": "AQ",
+  "ccn3": "010",
+  "cca3": "ATA",
+  "cioc": "",
+  "independent": false,
+  "status": "officially-assigned",
+  "unMember": false,
+  "unRegionalGroup": "",
+  "currencies": {},
+  "idd": {
+   "root": "",
+   "suffixes": []
+  },
+  "capital": [],
+  "altSpellings": [
+   "AQ"
+  ],
+  "region": "Antarctic",
+  "subregion": "",
+  "languages": {},
+  "translations": {
+   "deu": {
+    "official": "Antarktika",
+    "common": "Antarktis"
+   },
+   "fra": {
+    "official": "Antarctique",
+    "common": "Antarctique"
+   },
+   "jpn": {
+    "official": "南極",
+    "common": "南極大陸"
+   },
+   "spa": {
+    "official": "Antártida",
+    "common": "Antártida"
+   }
+  },
+  "latlng": [
+   -90,
+   0
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 14000000,
+  "flag": "🇦🇶",
+  "demonyms": {
+   "eng": {
+    "f": "Antarctican",
+    "m": "Antarctican"
+   },
+   "fra": {
+    "f": "Antarcticaine",
+    "m": "Antarcticain"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Australia",
+   "official": "Commonwealth of Australia",
+   "native": {
+    "eng": {
+     "official": "Commonwealth of Australia",
+     "common": "Australia"
+    }
+   }
+  },
+  "tld": [
+   ".au"
+  ],
+  "cca2": "AU",
+  "ccn3": "036",
+  "cca3": "AUS",
+  "cioc": "AUS",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "AUD": {
+    "name": "Australian dollar",
+    "symbol": "$"
+   }
+  },
+  "idd": {
+   "root": "+6",
+   "suffixes": [
+    "1"
+   ]
+  },
+  "capital": [
+   "Canberra"
+  ],
+  "altSpellings": [
+   "AU"
+  ],
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "languages": {
+   "eng": "English"
+  },
+  "translations": {
+   "deu": {
+    "official": "Commonwealth Australien",
+    "common": "Australien"
+   },
+   "fra": {
+    "official": "Australie",
+    "common": "Australie"
+   },
+   "jpn": {
+    "official": "オーストラリア連邦",
+    "common": "オーストラリア"
+   },
+   "spa": {
+    "official": "Mancomunidad de Australia",
+    "common": "Australia"
+   }
+  },
+  "latlng": [
+   -27,
+   133
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 7692024,
+  "flag": "🇦🇺",
+  "demonyms": {
+   "eng": {
+    "f": "Australian",
+    "m": "Australian"
+   },
+   "fra": {
+    "f": "Australienne",
+    "m": "Australien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Azerbaijan",
+   "official": "Republic of Azerbaijan",
+   "native": {
+    "aze": {
+     "official": "Azərbaycan Respublikası",
+     "common": "Azərbaycan"
+    },
+    "rus": {
+     "official": "Азербайджанская Республика",
+     "common": "Азербайджан"
+    }
+   }
+  },
+  "tld": [
+   ".az"
+  ],
+  "cca2": "AZ",
+  "ccn3": "031",
+  "cca3": "AZE",
+  "cioc": "AZE",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Eastern European Group",
+  "currencies": {
+   "AZN": {
+    "name": "Azerbaijani manat",
+    "symbol": "₼"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "94"
+   ]
+  },
+  "capital": [
+   "Baku"
+  ],
+  "altSpellings": [
+   "AZ",
+   "Republic of Azerbaijan",
+   "Azərbaycan Respublikası"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "aze": "Azerbaijani",
+   "rus": "Russian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Aserbaidschan",
+    "common": "Aserbaidschan"
+   },
+   "fra": {
+    "official": "République d'Azerbaïdjan",
+    "common": "Azerbaïdjan"
+   },
+   "jpn": {
+    "official": "アゼルバイジャン共和国",
+    "common": "アゼルバイジャン"
+   },
+   "spa": {
+    "official": "República de Azerbaiyán",
+    "common": "Azerbaiyán"
+   }
+  },
+  "latlng": [
+   40.5,
+   47.5
+  ],
+  "landlocked": true,
+  "borders": [
+   "ARM",
+   "GEO",
+   "IRN",
+   "RUS",
+   "TUR"
+  ],
+  "area": 86600,
+  "flag": "🇦🇿",
+  "demonyms": {
+   "eng": {
+    "f": "Azerbaijani",
+    "m": "Azerbaijani"
+   },
+   "fra": {
+    "f": "Azerbaïdjanaise",
+    "m": "Azerbaïdjanais"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Bulgaria",
+   "official": "Republic of Bulgaria",
+   "native": {
+    "bul": {
+     "official": "Република България",
+     "common": "България"
+    }
+   }
+  },
+  "tld": [
+   ".bg"
+  ],
+  "cca2": "BG",
+  "ccn3": "100",
+  "cca3": "BGR",
+  "cioc": "BUL",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Eastern European Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "59"
+   ]
+  },
+  "capital": [
+   "Sofia"
+  ],
+  "altSpellings": [
+   "BG",
+   "Republic of Bulgaria",
+   "Република България"
+  ],
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "languages": {
+   "bul": "Bulgarian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Bulgarien",
+    "common": "Bulgarien"
+   },
+   "fra": {
+    "official": "République de Bulgarie",
+    "common": "Bulgarie"
+   },
+   "jpn": {
+    "official": "ブルガリア共和国",
+    "common": "ブルガリア"
+   },
+   "spa": {
+    "official": "República de Bulgaria",
+    "common": "Bulgaria"
+   }
+  },
+  "latlng": [
+   43,
+   25
+  ],
+  "landlocked": false,
+  "borders": [
+   "GRC",
+   "MKD",
+   "ROU",
+   "SRB",
+   "TUR"
+  ],
+  "area": 110879,
+  "flag": "🇧🇬",
+  "demonyms": {
+   "eng": {
+    "f": "Bulgarian",
+    "m": "Bulgarian"
+   },
+   "fra": {
+    "f": "Bulgare",
+    "m": "Bulgare"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Brazil",
+   "official": "Federative Republic of Brazil",
+   "native": {
+    "por": {
+     "official": "República Federativa do Brasil",
+     "common": "Brasil"
+    }
+   }
+  },
+  "tld": [
+   ".br"
+  ],
+  "cca2": "BR",
+  "ccn3": "076",
+  "cca3": "BRA",
+  "cioc": "BRA",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Latin American and Caribbean Group",
+  "currencies": {
+   "BRL": {
+    "name": "Brazilian real",
+    "symbol": "R$"
+   }
+  },
+  "idd": {
+   "root": "+5",
+   "suffixes": [
+    "5"
+   ]
+  },
+  "capital": [
+   "Brasília"
+  ],
+  "altSpellings": [
+   "BR",
+   "Brasil",
+   "Federative Republic of Brazil",
+   "República Federativa do Brasil"
+  ],
+  "region": "Americas",
+  "subregion": "South America",
+  "languages": {
+   "por": "Portuguese"
+  },
+  "translations": {
+   "deu": {
+    "official": "Föderative Republik Brasilien",
+    "common": "Brasilien"
+   },
+   "fra": {
+    "official": "République fédérative du Brésil",
+    "common": "Brésil"
+   },
+   "jpn": {
+    "official": "ブラジル連邦共和国",
+    "common": "ブラジル"
+   },
+   "spa": {
+    "official": "República Federativa del Brasil",
+    "common": "Brasil"
+   }
+  },
+  "latlng": [
+   -10,
+   -55
+  ],
+  "landlocked": false,
+  "borders": [
+   "ARG",
+   "BOL",
+   "COL",
+   "GUF",
+   "GUY",
+   "PRY",
+   "PER",
+   "SUR",
+   "URY",
+   "VEN"
+  ],
+  "area": 8515767,
+  "flag": "🇧🇷",
+  "demonyms": {
+   "eng": {
+    "f": "Brazilian",
+    "m": "Brazilian"
+   },
+   "fra": {
+    "f": "Brésilienne",
+    "m": "Brésilien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Switzerland",
+   "official": "Swiss Confederation",
+   "native": {
+    "fra": {
+     "official": "Confédération suisse",
+     "common": "Suisse"
+    },
+    "gsw": {
+     "official": "Schweizerische Eidgenossenschaft",
+     "common": "Schweiz"
+    },
+    "ita": {
+     "official": "Confederazione Svizzera",
+     "common": "Svizzera"
+    },
+    "roh": {
+     "official": "Confederaziun svizra",
+     "common": "Svizra"
+    }
+   }
+  },
+  "tld": [
+   ".ch"
+  ],
+  "cca2": "CH",
+  "ccn3": "756",
+  "cca3": "CHE",
+  "cioc": "SUI",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "CHF": {
+    "name": "Swiss franc",
+    "symbol": "Fr."
+   }
+  },
+  "idd": {
+   "root": "+4",
+   "suffixes": [
+    "1"
+   ]
+  },
+  "capital": [
+   "Bern"
+  ],
+  "altSpellings": [
+   "CH",
+   "Swiss Confederation",
+   "Schweiz",
+   "Suisse",
+   "Svizzera",
+   "Svizra"
+  ],
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "languages": {
+   "fra": "French",
+   "gsw": "Swiss German",
+   "ita": "Italian",
+   "roh": "Romansh"
+  },
+  "translations": {
+   "deu": {
+    "official": "Schweizerische Eidgenossenschaft",
+    "common": "Schweiz"
+   },
+   "fra": {
+    "official": "Confédération suisse",
+    "common": "Suisse"
+   },
+   "jpn": {
+    "official": "スイス連邦",
+    "common": "スイス"
+   },
+   "spa": {
+    "official": "Confederación Suiza",
+    "common": "Suiza"
+   }
+  },
+  "latlng": [
+   47,
+   8
+  ],
+  "landlocked": true,
+  "borders": [
+   "AUT",
+   "FRA",
+   "ITA",
+   "LIE",
+   "DEU"
+  ],
+  "area": 41284,
+  "flag": "🇨🇭",
+  "demonyms": {
+   "eng": {
+    "f": "Swiss",
+    "m": "Swiss"
+   },
+   "fra": {
+    "f": "Suisse",
+    "m": "Suisse"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Germany",
+   "official": "Federal Republic of Germany",
+   "native": {
+    "deu": {
+     "official": "Bundesrepublik Deutschland",
+     "common": "Deutschland"
+    }
+   }
+  },
+  "tld": [
+   ".de"
+  ],
+  "cca2": "DE",
+  "ccn3": "276",
+  "cca3": "DEU",
+  "cioc": "GER",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+4",
+   "suffixes": [
+    "9"
+   ]
+  },
+  "capital": [
+   "Berlin"
+  ],
+  "altSpellings": [
+   "DE",
+   "Federal Republic of Germany",
+   "Bundesrepublik Deutschland"
+  ],
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "languages": {
+   "deu": "German"
+  },
+  "translations": {
+   "deu": {
+    "official": "Bundesrepublik Deutschland",
+    "common": "Deutschland"
+   },
+   "fra": {
+    "official": "République fédérale d'Allemagne",
+    "common": "Allemagne"
+   },
+   "jpn": {
+    "official": "ドイツ連邦共和国",
+    "common": "ドイツ"
+   },
+   "spa": {
+    "official": "República Federal de Alemania",
+    "common": "Alemania"
+   }
+  },
+  "latlng": [
+   51,
+   9
+  ],
+  "landlocked": false,
+  "borders": [
+   "AUT",
+   "BEL",
+   "CZE",
+   "DNK",
+   "FRA",
+   "LUX",
+   "NLD",
+   "POL",
+   "CHE"
+  ],
+  "area": 357114,
+  "flag": "🇩🇪",
+  "demonyms": {
+   "eng": {
+    "f": "German",
+    "m": "German"
+   },
+   "fra": {
+    "f": "Allemande",
+    "m": "Allemand"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Egypt",
+   "official": "Arab Republic of Egypt",
+   "native": {
+    "ara": {
+     "official": "جمهورية مصر العربية",
+     "common": "مصر"
+    }
+   }
+  },
+  "tld": [
+   ".eg",
+   ".مصر"
+  ],
+  "cca2": "EG",
+  "ccn3": "818",
+  "cca3": "EGY",
+  "cioc": "EGY",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "African Group",
+  "currencies": {
+   "EGP": {
+    "name": "Egyptian pound",
+    "symbol": "£"
+   }
+  },
+  "idd": {
+   "root": "+2",
+   "suffixes": [
+    "0"
+   ]
+  },
+  "capital": [
+   "Cairo"
+  ],
+  "altSpellings": [
+   "EG",
+   "Arab Republic of Egypt"
+  ],
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "languages": {
+   "ara": "Arabic"
+  },
+  "translations": {
+   "deu": {
+    "official": "Arabische Republik Ägypten",
+    "common": "Ägypten"
+   },
+   "fra": {
+    "official": "République arabe d'Égypte",
+    "common": "Égypte"
+   },
+   "jpn": {
+    "official": "エジプト・アラブ共和国",
+    "common": "エジプト"
+   },
+   "spa": {
+    "official": "República Árabe de Egipto",
+    "common": "Egipto"
+   }
+  },
+  "latlng": [
+   27,
+   30
+  ],
+  "landlocked": false,
+  "borders": [
+   "ISR",
+   "LBY",
+   "PSE",
+   "SDN"
+  ],
+  "area": 1002450,
+  "flag": "🇪🇬",
+  "demonyms": {
+   "eng": {
+    "f": "Egyptian",
+    "m": "Egyptian"
+   },
+   "fra": {
+    "f": "Égyptienne",
+    "m": "Égyptien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Spain",
+   "official": "Kingdom of Spain",
+   "native": {
+    "spa": {
+     "official": "Reino de España",
+     "common": "España"
+    }
+   }
+  },
+  "tld": [
+   ".es"
+  ],
+  "cca2": "ES",
+  "ccn3": "724",
+  "cca3": "ESP",
+  "cioc": "ESP",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "4"
+   ]
+  },
+  "capital": [
+   "Madrid"
+  ],
+  "altSpellings": [
+   "ES",
+   "Kingdom of Spain",
+   "Reino de España"
+  ],
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "languages": {
+   "spa": "Spanish"
+  },
+  "translations": {
+   "deu": {
+    "official": "Königreich Spanien",
+    "common": "Spanien"
+   },
+   "fra": {
+    "official": "Royaume d'Espagne",
+    "common": "Espagne"
+   },
+   "jpn": {
+    "official": "スペイン",
+    "common": "スペイン"
+   },
+   "spa": {
+    "official": "Reino de España",
+    "common": "España"
+   }
+  },
+  "latlng": [
+   40,
+   -4
+  ],
+  "landlocked": false,
+  "borders": [
+   "AND",
+   "FRA",
+   "GIB",
+   "PRT",
+   "MAR"
+  ],
+  "area": 505992,
+  "flag": "🇪🇸",
+  "demonyms": {
+   "eng": {
+    "f": "Spanish",
+    "m": "Spanish"
+   },
+   "fra": {
+    "f": "Espagnole",
+    "m": "Espagnol"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "France",
+   "official": "French Republic",
+   "native": {
+    "fra": {
+     "official": "République française",
+     "common": "France"
+    }
+   }
+  },
+  "tld": [
+   ".fr"
+  ],
+  "cca2": "FR",
+  "ccn3": "250",
+  "cca3": "FRA",
+  "cioc": "FRA",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "3"
+   ]
+  },
+  "capital": [
+   "Paris"
+  ],
+  "altSpellings": [
+   "FR",
+   "French Republic",
+   "République française"
+  ],
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "languages": {
+   "fra": "French"
+  },
+  "translations": {
+   "deu": {
+    "official": "Französische Republik",
+    "common": "Frankreich"
+   },
+   "fra": {
+    "official": "République française",
+    "common": "France"
+   },
+   "jpn": {
+    "official": "フランス共和国",
+    "common": "フランス"
+   },
+   "spa": {
+    "official": "República francés",
+    "common": "Francia"
+   }
+  },
+  "latlng": [
+   46,
+   2
+  ],
+  "landlocked": false,
+  "borders": [
+   "AND",
+   "BEL",
+   "DEU",
+   "ITA",
+   "LUX",
+   "MCO",
+   "ESP",
+   "CHE"
+  ],
+  "area": 551695,
+  "flag": "🇫🇷",
+  "demonyms": {
+   "eng": {
+    "f": "French",
+    "m": "French"
+   },
+   "fra": {
+    "f": "Française",
+    "m": "Français"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Georgia",
+   "official": "Georgia",
+   "native": {
+    "kat": {
+     "official": "საქართველო",
+     "common": "საქართველო"
+    }
+   }
+  },
+  "tld": [
+   ".ge"
+  ],
+  "cca2": "GE",
+  "ccn3": "268",
+  "cca3": "GEO",
+  "cioc": "GEO",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Eastern European Group",
+  "currencies": {
+   "GEL": {
+    "name": "lari",
+    "symbol": "₾"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "95"
+   ]
+  },
+  "capital": [
+   "Tbilisi"
+  ],
+  "altSpellings": [
+   "GE",
+   "Sakartvelo"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "kat": "Georgian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Georgien",
+    "common": "Georgien"
+   },
+   "fra": {
+    "official": "République de Géorgie",
+    "common": "Géorgie"
+   },
+   "jpn": {
+    "official": "ジョージア",
+    "common": "ジョージア"
+   },
+   "spa": {
+    "official": "Georgia",
+    "common": "Georgia"
+   }
+  },
+  "latlng": [
+   42,
+   43.5
+  ],
+  "landlocked": false,
+  "borders": [
+   "ARM",
+   "AZE",
+   "RUS",
+   "TUR"
+  ],
+  "area": 69700,
+  "flag": "🇬🇪",
+  "demonyms": {
+   "eng": {
+    "f": "Georgian",
+    "m": "Georgian"
+   },
+   "fra": {
+    "f": "Géorgienne",
+    "m": "Géorgien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Greece",
+   "official": "Hellenic Republic",
+   "native": {
+    "ell": {
+     "official": "Ελληνική Δημοκρατία",
+     "common": "Ελλάδα"
+    }
+   }
+  },
+  "tld": [
+   ".gr"
+  ],
+  "cca2": "GR",
+  "ccn3": "300",
+  "cca3": "GRC",
+  "cioc": "GRE",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "0"
+   ]
+  },
+  "capital": [
+   "Athens"
+  ],
+  "altSpellings": [
+   "GR",
+   "Elláda",
+   "Hellenic Republic",
+   "Ελληνική Δημοκρατία"
+  ],
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "languages": {
+   "ell": "Greek"
+  },
+  "translations": {
+   "deu": {
+    "official": "Hellenische Republik",
+    "common": "Griechenland"
+   },
+   "fra": {
+    "official": "République hellénique",
+    "common": "Grèce"
+   },
+   "jpn": {
+    "official": "ギリシャ共和国",
+    "common": "ギリシャ"
+   },
+   "spa": {
+    "official": "República Helénica",
+    "common": "Grecia"
+   }
+  },
+  "latlng": [
+   39,
+   22
+  ],
+  "landlocked": false,
+  "borders": [
+   "ALB",
+   "BGR",
+   "TUR",
+   "MKD"
+  ],
+  "area": 131990,
+  "flag": "🇬🇷",
+  "demonyms": {
+   "eng": {
+    "f": "Greek",
+    "m": "Greek"
+   },
+   "fra": {
+    "f": "Grecque",
+    "m": "Grec"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Greenland",
+   "official": "Greenland",
+   "native": {
+    "kal": {
+     "official": "Kalaallit Nunaat",
+     "common": "Kalaallit Nunaat"
+    }
+   }
+  },
+  "tld": [
+   ".gl"
+  ],
+  "cca2": "GL",
+  "ccn3": "304",
+  "cca3": "GRL",
+  "cioc": "",
+  "independent": false,
+  "status": "officially-assigned",
+  "unMember": false,
+  "unRegionalGroup": "",
+  "currencies": {
+   "DKK": {
+    "name": "krone",
+    "symbol": "kr."
+   }
+  },
+  "idd": {
+   "root": "+2",
+   "suffixes": [
+    "99"
+   ]
+  },
+  "capital": [
+   "Nuuk"
+  ],
+  "altSpellings": [
+   "GL",
+   "Grønland"
+  ],
+  "region": "Americas",
+  "subregion": "North America",
+  "languages": {
+   "kal": "Greenlandic"
+  },
+  "translations": {
+   "deu": {
+    "official": "Grönland",
+    "common": "Grönland"
+   },
+   "fra": {
+    "official": "Groenland",
+    "common": "Groenland"
+   },
+   "jpn": {
+    "official": "グリーンランド",
+    "common": "グリーンランド"
+   },
+   "spa": {
+    "official": "Groenlandia",
+    "common": "Groenlandia"
+   }
+  },
+  "latlng": [
+   72,
+   -40
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 2166086,
+  "flag": "🇬🇱",
+  "demonyms": {
+   "eng": {
+    "f": "Greenlandic",
+    "m": "Greenlandic"
+   },
+   "fra": {
+    "f": "Groenlandaise",
+    "m": "Groenlandais"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Iran",
+   "official": "Islamic Republic of Iran",
+   "native": {
+    "fas": {
+     "official": "جمهوری اسلامی ایران",
+     "common": "ایران"
+    }
+   }
+  },
+  "tld": [
+   ".ir",
+   "ایران."
+  ],
+  "cca2": "IR",
+  "ccn3": "364",
+  "cca3": "IRN",
+  "cioc": "IRI",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Asia and the Pacific Group",
+  "currencies": {
+   "IRR": {
+    "name": "Iranian rial",
+    "symbol": "﷼"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "8"
+   ]
+  },
+  "capital": [
+   "Tehran"
+  ],
+  "altSpellings": [
+   "IR",
+   "Islamic Republic of Iran",
+   "Iran, Islamic Republic of",
+   "Jomhuri-ye Eslāmi-ye Irān"
+  ],
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "languages": {
+   "fas": "Persian (Farsi)"
+  },
+  "translations": {
+   "deu": {
+    "official": "Islamische Republik Iran",
+    "common": "Iran"
+   },
+   "fra": {
+    "official": "République islamique d'Iran",
+    "common": "Iran"
+   },
+   "jpn": {
+    "official": "イラン・イスラム共和国",
+    "common": "イラン"
+   },
+   "spa": {
+    "official": "República Islámica de Irán",
+    "common": "Iran"
+   }
+  },
+  "latlng": [
+   32,
+   53
+  ],
+  "landlocked": false,
+  "borders": [
+   "AFG",
+   "ARM",
+   "AZE",
+   "IRQ",
+   "PAK",
+   "TUR",
+   "TKM"
+  ],
+  "area": 1648195,
+  "flag": "🇮🇷",
+  "demonyms": {
+   "eng": {
+    "f": "Iranian",
+    "m": "Iranian"
+   },
+   "fra": {
+    "f": "Iranienne",
+    "m": "Iranien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Iraq",
+   "official": "Republic of Iraq",
+   "native": {
+    "ara": {
+     "official": "جمهورية العراق",
+     "common": "العراق"
+    },
+    "arc": {
+     "official": "ܩܘܼܛܢܵܐ ܐܝܼܪܲܩ",
+     "common": "ܩܘܼܛܢܵܐ"
+    },
+    "ckb": {
+     "official": "کۆماری عێراق",
+     "common": "کۆماری"
+    }
+   }
+  },
+  "tld": [
+   ".iq"
+  ],
+  "cca2": "IQ",
+  "ccn3": "368",
+  "cca3": "IRQ",
+  "cioc": "IRQ",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Asia and the Pacific Group",
+  "currencies": {
+   "IQD": {
+    "name": "Iraqi dinar",
+    "symbol": "ع.د"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "64"
+   ]
+  },
+  "capital": [
+   "Baghdad"
+  ],
+  "altSpellings": [
+   "IQ",
+   "Republic of Iraq",
+   "Jumhūriyyat al-‘Irāq"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "ara": "Arabic",
+   "arc": "Aramaic",
+   "ckb": "Sorani"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Irak",
+    "common": "Irak"
+   },
+   "fra": {
+    "official": "République d'Irak",
+    "common": "Irak"
+   },
+   "jpn": {
+    "official": "イラク共和国",
+    "common": "イラク"
+   },
+   "spa": {
+    "official": "República de Irak",
+    "common": "Irak"
+   }
+  },
+  "latlng": [
+   33,
+   44
+  ],
+  "landlocked": false,
+  "borders": [
+   "IRN",
+   "JOR",
+   "KWT",
+   "SAU",
+   "SYR",
+   "TUR"
+  ],
+  "area": 438317,
+  "flag": "🇮🇶",
+  "demonyms": {
+   "eng": {
+    "f": "Iraqi",
+    "m": "Iraqi"
+   },
+   "fra": {
+    "f": "Irakienne",
+    "m": "Irakien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Iceland",
+   "official": "Iceland",
+   "native": {
+    "isl": {
+     "official": "Ísland",
+     "common": "Ísland"
+    }
+   }
+  },
+  "tld": [
+   ".is"
+  ],
+  "cca2": "IS",
+  "ccn3": "352",
+  "cca3": "ISL",
+  "cioc": "ISL",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "ISK": {
+    "name": "Icelandic króna",
+    "symbol": "kr"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "54"
+   ]
+  },
+  "capital": [
+   "Reykjavik"
+  ],
+  "altSpellings": [
+   "IS",
+   "Island",
+   "Republic of Iceland",
+   "Lýðveldið Ísland"
+  ],
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "languages": {
+   "isl": "Icelandic"
+  },
+  "translations": {
+   "deu": {
+    "official": "Island",
+    "common": "Island"
+   },
+   "fra": {
+    "official": "République d'Islande",
+    "common": "Islande"
+   },
+   "jpn": {
+    "official": "アイスランド",
+    "common": "アイスランド"
+   },
+   "spa": {
+    "official": "Islandia",
+    "common": "Islandia"
+   }
+  },
+  "latlng": [
+   65,
+   -18
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 103000,
+  "flag": "🇮🇸",
+  "demonyms": {
+   "eng": {
+    "f": "Icelander",
+    "m": "Icelander"
+   },
+   "fra": {
+    "f": "Islandaise",
+    "m": "Islandais"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Italy",
+   "official": "Italian Republic",
+   "native": {
+    "ita": {
+     "official": "Repubblica italiana",
+     "common": "Italia"
+    }
+   }
+  },
+  "tld": [
+   ".it"
+  ],
+  "cca2": "IT",
+  "ccn3": "380",
+  "cca3": "ITA",
+  "cioc": "ITA",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "9"
+   ]
+  },
+  "capital": [
+   "Rome"
+  ],
+  "altSpellings": [
+   "IT",
+   "Italian Republic",
+   "Repubblica italiana"
+  ],
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "languages": {
+   "ita": "Italian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Italienische Republik",
+    "common": "Italien"
+   },
+   "fra": {
+    "official": "République italienne",
+    "common": "Italie"
+   },
+   "jpn": {
+    "official": "イタリア共和国",
+    "common": "イタリア"
+   },
+   "spa": {
+    "official": "República Italiana",
+    "common": "Italia"
+   }
+  },
+  "latlng": [
+   42.83333333,
+   12.83333333
+  ],
+  "landlocked": false,
+  "borders": [
+   "AUT",
+   "FRA",
+   "SMR",
+   "SVN",
+   "CHE",
+   "VAT"
+  ],
+  "area": 301336,
+  "flag": "🇮🇹",
+  "demonyms": {
+   "eng": {
+    "f": "Italian",
+    "m": "Italian"
+   },
+   "fra": {
+    "f": "Italienne",
+    "m": "Italien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Japan",
+   "official": "Japan",
+   "native": {
+    "jpn": {
+     "official": "日本",
+     "common": "日本"
+    }
+   }
+  },
+  "tld": [
+   ".jp",
+   ".みんな"
+  ],
+  "cca2": "JP",
+  "ccn3": "392",
+  "cca3": "JPN",
+  "cioc": "JPN",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Asia and the Pacific Group",
+  "currencies": {
+   "JPY": {
+    "name": "Japanese yen",
+    "symbol": "¥"
+   }
+  },
+  "idd": {
+   "root": "+8",
+   "suffixes": [
+    "1"
+   ]
+  },
+  "capital": [
+   "Tokyo"
+  ],
+  "altSpellings": [
+   "JP",
+   "Nippon",
+   "Nihon"
+  ],
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "languages": {
+   "jpn": "Japanese"
+  },
+  "translations": {
+   "deu": {
+    "official": "Japan",
+    "common": "Japan"
+   },
+   "fra": {
+    "official": "Japon",
+    "common": "Japon"
+   },
+   "jpn": {
+    "official": "日本国",
+    "common": "日本"
+   },
+   "spa": {
+    "official": "Japón",
+    "common": "Japón"
+   }
+  },
+  "latlng": [
+   36,
+   138
+  ],
+  "landlocked": false,
+  "borders": [],
+  "area": 377930,
+  "flag": "🇯🇵",
+  "demonyms": {
+   "eng": {
+    "f": "Japanese",
+    "m": "Japanese"
+   },
+   "fra": {
+    "f": "Japonaise",
+    "m": "Japonais"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Kosovo",
+   "official": "Republic of Kosovo",
+   "native": {
+    "sqi": {
+     "official": "Republika e Kosovës",
+     "common": "Kosova"
+    },
+    "srp": {
+     "official": "Република Косово",
+     "common": "Косово"
+    }
+   }
+  },
+  "tld": [
+   ".xk"
+  ],
+  "cca2": "XK",
+  "ccn3": "",
+  "cca3": "UNK",
+  "cioc": "KOS",
+  "independent": null,
+  "status": "user-assigned",
+  "unMember": false,
+  "unRegionalGroup": "",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "83"
+   ]
+  },
+  "capital": [
+   "Pristina"
+  ],
+  "altSpellings": [
+   "XK",
+   "Република Косово"
+  ],
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "languages": {
+   "sqi": "Albanian",
+   "srp": "Serbian"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Kosovo",
+    "common": "Kosovo"
+   },
+   "fra": {
+    "official": "République du Kosovo",
+    "common": "Kosovo"
+   },
+   "jpn": {
+    "official": "コソボ共和国",
+    "common": "コソボ"
+   },
+   "spa": {
+    "official": "República de Kosovo",
+    "common": "Kosovo"
+   }
+  },
+  "latlng": [
+   42.666667,
+   21.166667
+  ],
+  "landlocked": true,
+  "borders": [
+   "ALB",
+   "MKD",
+   "MNE",
+   "SRB"
+  ],
+  "area": 10908,
+  "flag": "🇽🇰",
+  "demonyms": {
+   "eng": {
+    "f": "Kosovar",
+    "m": "Kosovar"
+   },
+   "fra": {
+    "f": "Kosovare",
+    "m": "Kosovar"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Mexico",
+   "official": "United Mexican States",
+   "native": {
+    "spa": {
+     "official": "Estados Unidos Mexicanos",
+     "common": "México"
+    }
+   }
+  },
+  "tld": [
+   ".mx"
+  ],
+  "cca2": "MX",
+  "ccn3": "484",
+  "cca3": "MEX",
+  "cioc": "MEX",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Latin American and Caribbean Group",
+  "currencies": {
+   "MXN": {
+    "name": "Mexican peso",
+    "symbol": "$"
+   }
+  },
+  "idd": {
+   "root": "+5",
+   "suffixes": [
+    "2"
+   ]
+  },
+  "capital": [
+   "Mexico City"
+  ],
+  "altSpellings": [
+   "MX",
+   "Mexicanos",
+   "United Mexican States",
+   "Estados Unidos Mexicanos"
+  ],
+  "region": "Americas",
+  "subregion": "North America",
+  "languages": {
+   "spa": "Spanish"
+  },
+  "translations": {
+   "deu": {
+    "official": "Vereinigte Mexikanische Staaten",
+    "common": "Mexiko"
+   },
+   "fra": {
+    "official": "États-Unis du Mexique",
+    "common": "Mexique"
+   },
+   "jpn": {
+    "official": "メキシコ合衆国",
+    "common": "メキシコ"
+   },
+   "spa": {
+    "official": "Estados Unidos Mexicanos",
+    "common": "México"
+   }
+  },
+  "latlng": [
+   23,
+   -102
+  ],
+  "landlocked": false,
+  "borders": [
+   "BLZ",
+   "GTM",
+   "USA"
+  ],
+  "area": 1964375,
+  "flag": "🇲🇽",
+  "demonyms": {
+   "eng": {
+    "f": "Mexican",
+    "m": "Mexican"
+   },
+   "fra": {
+    "f": "Mexicaine",
+    "m": "Mexicain"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Norway",
+   "official": "Kingdom of Norway",
+   "native": {
+    "nno": {
+     "official": "Kongeriket Noreg",
+     "common": "Noreg"
+    },
+    "nob": {
+     "official": "Kongeriket Norge",
+     "common": "Norge"
+    },
+    "smi": {
+     "official": "Norgga gonagasriika",
+     "common": "Norgga"
+    }
+   }
+  },
+  "tld": [
+   ".no"
+  ],
+  "cca2": "NO",
+  "ccn3": "578",
+  "cca3": "NOR",
+  "cioc": "NOR",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "NOK": {
+    "name": "Norwegian krone",
+    "symbol": "kr"
+   }
+  },
+  "idd": {
+   "root": "+4",
+   "suffixes": [
+    "7"
+   ]
+  },
+  "capital": [
+   "Oslo"
+  ],
+  "altSpellings": [
+   "NO",
+   "Norge",
+   "Noreg",
+   "Kingdom of Norway",
+   "Kongeriket Norge",
+   "Kongeriket Noreg"
+  ],
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "languages": {
+   "nno": "Norwegian Nynorsk",
+   "nob": "Norwegian Bokmål",
+   "smi": "Sami"
+  },
+  "translations": {
+   "deu": {
+    "official": "Königreich Norwegen",
+    "common": "Norwegen"
+   },
+   "fra": {
+    "official": "Royaume de Norvège",
+    "common": "Norvège"
+   },
+   "jpn": {
+    "official": "ノルウェー王国",
+    "common": "ノルウェー"
+   },
+   "spa": {
+    "official": "Reino de Noruega",
+    "common": "Noruega"
+   }
+  },
+  "latlng": [
+   62,
+   10
+  ],
+  "landlocked": false,
+  "borders": [
+   "FIN",
+   "SWE",
+   "RUS"
+  ],
+  "area": 323802,
+  "flag": "🇳🇴",
+  "demonyms": {
+   "eng": {
+    "f": "Norwegian",
+    "m": "Norwegian"
+   },
+   "fra": {
+    "f": "Norvégienne",
+    "m": "Norvégien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Peru",
+   "official": "Republic of Peru",
+   "native": {
+    "aym": {
+     "official": "Piruw Suyu",
+     "common": "Piruw"
+    },
+    "que": {
+     "official": "Piruw Ripuwlika",
+     "common": "Piruw"
+    },
+    "spa": {
+     "official": "República del Perú",
+     "common": "Perú"
+    }
+   }
+  },
+  "tld": [
+   ".pe"
+  ],
+  "cca2": "PE",
+  "ccn3": "604",
+  "cca3": "PER",
+  "cioc": "PER",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Latin American and Caribbean Group",
+  "currencies": {
+   "PEN": {
+    "name": "Peruvian sol",
+    "symbol": "S/."
+   }
+  },
+  "idd": {
+   "root": "+5",
+   "suffixes": [
+    "1"
+   ]
+  },
+  "capital": [
+   "Lima"
+  ],
+  "altSpellings": [
+   "PE",
+   "Republic of Peru",
+   "República del Perú"
+  ],
+  "region": "Americas",
+  "subregion": "South America",
+  "languages": {
+   "aym": "Aymara",
+   "que": "Quechua",
+   "spa": "Spanish"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Peru",
+    "common": "Peru"
+   },
+   "fra": {
+    "official": "République du Pérou",
+    "common": "Pérou"
+   },
+   "jpn": {
+    "official": "ペルー共和国",
+    "common": "ペルー"
+   },
+   "spa": {
+    "official": "República de Perú",
+    "common": "Perú"
+   }
+  },
+  "latlng": [
+   -10,
+   -76
+  ],
+  "landlocked": false,
+  "borders": [
+   "BOL",
+   "BRA",
+   "CHL",
+   "COL",
+   "ECU"
+  ],
+  "area": 1285216,
+  "flag": "🇵🇪",
+  "demonyms": {
+   "eng": {
+    "f": "Peruvian",
+    "m": "Peruvian"
+   },
+   "fra": {
+    "f": "Péruvienne",
+    "m": "Péruvien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Syria",
+   "official": "Syrian Arab Republic",
+   "native": {
+    "ara": {
+     "official": "الجمهورية العربية السورية",
+     "common": "سوريا"
+    }
+   }
+  },
+  "tld": [
+   ".sy",
+   "سوريا."
+  ],
+  "cca2": "SY",
+  "ccn3": "760",
+  "cca3": "SYR",
+  "cioc": "SYR",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Asia and the Pacific Group",
+  "currencies": {
+   "SYP": {
+    "name": "Syrian pound",
+    "symbol": "£"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "63"
+   ]
+  },
+  "capital": [
+   "Damascus"
+  ],
+  "altSpellings": [
+   "SY",
+   "Syrian Arab Republic",
+   "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "ara": "Arabic"
+  },
+  "translations": {
+   "deu": {
+    "official": "Arabische Republik Syrien",
+    "common": "Syrien"
+   },
+   "fra": {
+    "official": "République arabe syrienne",
+    "common": "Syrie"
+   },
+   "jpn": {
+    "official": "シリア・アラブ共和国",
+    "common": "シリア"
+   },
+   "spa": {
+    "official": "República Árabe Siria",
+    "common": "Siria"
+   }
+  },
+  "latlng": [
+   35,
+   38
+  ],
+  "landlocked": false,
+  "borders": [
+   "IRQ",
+   "ISR",
+   "JOR",
+   "LBN",
+   "TUR"
+  ],
+  "area": 185180,
+  "flag": "🇸🇾",
+  "demonyms": {
+   "eng": {
+    "f": "Syrian",
+    "m": "Syrian"
+   },
+   "fra": {
+    "f": "Syrienne",
+    "m": "Syrien"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Türkiye",
+   "official": "Republic of Türkiye",
+   "native": {
+    "tur": {
+     "official": "Türkiye Cumhuriyeti",
+     "common": "Türkiye"
+    }
+   }
+  },
+  "tld": [
+   ".tr"
+  ],
+  "cca2": "TR",
+  "ccn3": "792",
+  "cca3": "TUR",
+  "cioc": "TUR",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "TRY": {
+    "name": "Turkish lira",
+    "symbol": "₺"
+   }
+  },
+  "idd": {
+   "root": "+9",
+   "suffixes": [
+    "0"
+   ]
+  },
+  "capital": [
+   "Ankara"
+  ],
+  "altSpellings": [
+   "TR",
+   "Turkiye",
+   "Republic of Turkey",
+   "Türkiye Cumhuriyeti"
+  ],
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "languages": {
+   "tur": "Turkish"
+  },
+  "translations": {
+   "deu": {
+    "official": "Republik Türkei",
+    "common": "Türkei"
+   },
+   "fra": {
+    "official": "République de Turquie",
+    "common": "Turquie"
+   },
+   "jpn": {
+    "official": "トルコ共和国",
+    "common": "トルコ"
+   },
+   "spa": {
+    "official": "República de Turquía",
+    "common": "Turquía"
+   }
+  },
+  "latlng": [
+   39,
+   35
+  ],
+  "landlocked": false,
+  "borders": [
+   "ARM",
+   "AZE",
+   "BGR",
+   "GEO",
+   "GRC",
+   "IRN",
+   "IRQ",
+   "SYR"
+  ],
+  "area": 783562,
+  "flag": "🇹🇷",
+  "demonyms": {
+   "eng": {
+    "f": "Turkish",
+    "m": "Turkish"
+   },
+   "fra": {
+    "f": "Turque",
+    "m": "Turc"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "United States",
+   "official": "United States of America",
+   "native": {
+    "eng": {
+     "official": "United States of America",
+     "common": "United States"
+    }
+   }
+  },
+  "tld": [
+   ".us"
+  ],
+  "cca2": "US",
+  "ccn3": "840",
+  "cca3": "USA",
+  "cioc": "USA",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "Western European and Others Group",
+  "currencies": {
+   "USD": {
+    "name": "United States dollar",
+    "symbol": "$"
+   }
+  },
+  "idd": {
+   "root": "+1",
+   "suffixes": [
+    "201",
+    "202",
+    "203",
+    "205",
+    "206",
+    "207",
+    "208",
+    "209",
+    "210",
+    "212",
+    "213",
+    "214",
+    "215",
+    "216",
+    "217",
+    "218",
+    "219",
+    "220",
+    "223",
+    "224",
+    "225",
+    "227",
+    "228",
+    "229",
+    "231",
+    "234",
+    "239",
+    "240",
+    "248",
+    "251",
+    "252",
+    "253",
+    "254",
+    "256",
+    "260",
+    "262",
+    "267",
+    "269",
+    "270",
+    "272",
+    "274",
+    "276",
+    "279",
+    "281",
+    "283",
+    "301",
+    "302",
+    "303",
+    "304",
+    "305",
+    "307",
+    "308",
+    "309",
+    "310",
+    "312",
+    "313",
+    "314",
+    "315",
+    "316",
+    "317",
+    "318",
+    "319",
+    "320",
+    "321",
+    "323",
+    "325",
+    "326",
+    "327",
+    "330",
+    "331",
+    "332",
+    "334",
+    "336",
+    "337",
+    "339",
+    "341",
+    "346",
+    "347",
+    "351",
+    "352",
+    "360",
+    "361",
+    "364",
+    "380",
+    "385",
+    "386",
+    "401",
+    "402",
+    "404",
+    "405",
+    "406",
+    "407",
+    "408",
+    "409",
+    "410",
+    "412",
+    "413",
+    "414",
+    "415",
+    "417",
+    "419",
+    "423",
+    "424",
+    "425",
+    "430",
+    "432",
+    "434",
+    "435",
+    "440",
+    "442",
+    "443",
+    "445",
+    "447",
+    "448",
+    "458",
+    "463",
+    "464",
+    "469",
+    "470",
+    "475",
+    "478",
+    "479",
+    "480",
+    "484",
+    "500",
+    "501",
+    "502",
+    "503",
+    "504",
+    "505",
+    "507",
+    "508",
+    "509",
+    "510",
+    "512",
+    "513",
+    "515",
+    "516",
+    "517",
+    "518",
+    "520",
+    "521",
+    "522",
+    "523",
+    "524",
+    "525",
+    "526",
+    "527",
+    "528",
+    "529",
+    "530",
+    "531",
+    "532",
+    "533",
+    "534",
+    "535",
+    "538",
+    "539",
+    "540",
+    "541",
+    "542",
+    "543",
+    "544",
+    "545",
+    "546",
+    "547",
+    "549",
+    "550",
+    "551",
+    "552",
+    "553",
+    "554",
+    "556",
+    "557",
+    "558",
+    "559",
+    "561",
+    "562",
+    "563",
+    "564",
+    "566",
+    "567",
+    "569",
+    "570",
+    "571",
+    "572",
+    "573",
+    "574",
+    "575",
+    "577",
+    "578",
+    "580",
+    "582",
+    "585",
+    "586",
+    "588",
+    "589",
+    "601",
+    "602",
+    "603",
+    "605",
+    "606",
+    "607",
+    "608",
+    "609",
+    "610",
+    "612",
+    "614",
+    "615",
+    "616",
+    "617",
+    "618",
+    "619",
+    "620",
+    "623",
+    "626",
+    "628",
+    "629",
+    "630",
+    "631",
+    "636",
+    "640",
+    "641",
+    "646",
+    "650",
+    "651",
+    "656",
+    "657",
+    "659",
+    "660",
+    "661",
+    "662",
+    "667",
+    "669",
+    "678",
+    "679",
+    "680",
+    "681",
+    "682",
+    "689",
+    "700",
+    "701",
+    "702",
+    "703",
+    "704",
+    "706",
+    "707",
+    "708",
+    "710",
+    "712",
+    "713",
+    "714",
+    "715",
+    "716",
+    "717",
+    "718",
+    "719",
+    "720",
+    "724",
+    "725",
+    "726",
+    "727",
+    "730",
+    "731",
+    "732",
+    "734",
+    "737",
+    "740",
+    "743",
+    "747",
+    "754",
+    "757",
+    "760",
+    "762",
+    "763",
+    "765",
+    "769",
+    "770",
+    "771",
+    "772",
+    "773",
+    "774",
+    "775",
+    "779",
+    "781",
+    "785",
+    "786",
+    "801",
+    "802",
+    "803",
+    "804",
+    "805",
+    "806",
+    "808",
+    "810",
+    "812",
+    "813",
+    "814",
+    "815",
+    "816",
+    "817",
+    "818",
+    "820",
+    "826",
+    "828",
+    "830",
+    "831",
+    "832",
+    "838",
+    "839",
+    "840",
+    "843",
+    "845",
+    "847",
+    "848",
+    "850",
+    "854",
+    "856",
+    "857",
+    "858",
+    "859",
+    "860",
+    "862",
+    "863",
+    "864",
+    "865",
+    "870",
+    "872",
+    "878",
+    "901",
+    "903",
+    "904",
+    "906",
+    "907",
+    "908",
+    "909",
+    "910",
+    "912",
+    "913",
+    "914",
+    "915",
+    "916",
+    "917",
+    "918",
+    "919",
+    "920",
+    "925",
+    "928",
+    "929",
+    "930",
+    "931",
+    "934",
+    "936",
+    "937",
+    "938",
+    "940",
+    "941",
+    "943",
+    "945",
+    "947",
+    "948",
+    "949",
+    "951",
+    "952",
+    "954",
+    "956",
+    "959",
+    "970",
+    "971",
+    "972",
+    "973",
+    "975",
+    "978",
+    "979",
+    "980",
+    "983",
+    "984",
+    "985",
+    "986",
+    "989"
+   ]
+  },
+  "capital": [
+   "Washington D.C."
+  ],
+  "altSpellings": [
+   "US",
+   "USA",
+   "United States of America"
+  ],
+  "region": "Americas",
+  "subregion": "North America",
+  "languages": {
+   "eng": "English"
+  },
+  "translations": {
+   "deu": {
+    "official": "Vereinigte Staaten von Amerika",
+    "common": "Vereinigte Staaten"
+   },
+   "fra": {
+    "official": "Les états-unis d'Amérique",
+    "common": "États-Unis"
+   },
+   "jpn": {
+    "official": "アメリカ合衆国",
+    "common": "アメリカ"
+   },
+   "spa": {
+    "official": "Estados Unidos de América",
+    "common": "Estados Unidos"
+   }
+  },
+  "latlng": [
+   38,
+   -97
+  ],
+  "landlocked": false,
+  "borders": [
+   "CAN",
+   "MEX"
+  ],
+  "area": 9372610,
+  "flag": "🇺🇸",
+  "demonyms": {
+   "eng": {
+    "f": "American",
+    "m": "American"
+   },
+   "fra": {
+    "f": "Américaine",
+    "m": "Américain"
+   }
+  }
+ },
+ {
+  "name": {
+   "common": "Vatican City",
+   "official": "Vatican City State",
+   "native": {
+    "ita": {
+     "official": "Stato della Città del Vaticano",
+     "common": "Vaticano"
+    },
+    "lat": {
+     "official": "Status Civitatis Vaticanæ",
+     "common": "Vaticanæ"
+    }
+   }
+  },
+  "tld": [
+   ".va"
+  ],
+  "cca2": "VA",
+  "ccn3": "336",
+  "cca3": "VAT",
+  "cioc": "",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "unRegionalGroup": "",
+  "currencies": {
+   "EUR": {
+    "name": "Euro",
+    "symbol": "€"
+   }
+  },
+  "idd": {
+   "root": "+3",
+   "suffixes": [
+    "906698",
+    "79"
+   ]
+  },
+  "capital": [
+   "Vatican City"
+  ],
+  "altSpellings": [
+   "VA",
+   "Holy See (Vatican City State)",
+   "Vatican City State",
+   "Vatican",
+   "Stato della Città del Vaticano"
+  ],
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "languages": {
+   "ita": "Italian",
+   "lat": "Latin"
+  },
+  "translations": {
+   "deu": {
+    "official": "Staat Vatikanstadt",
+    "common": "Vatikanstadt"
+   },
+   "fra": {
+    "official": "Cité du Vatican",
+    "common": "Cité du Vatican"
+   },
+   "jpn": {
+    "official": "バチカン市国",
+    "common": "バチカン"
+   },
+   "spa": {
+    "official": "Ciudad del Vaticano",
+    "common": "Ciudad del Vaticano"
+   }
+  },
+  "latlng": [
+   41.9,
+   12.45
+  ],
+  "landlocked": true,
+  "borders": [
+   "ITA"
+  ],
+  "area": 0.44,
+  "flag": "🇻🇦",
+  "demonyms": {
+   "eng": {
+    "f": "Vatican",
+    "m": "Vatican"
+   },
+   "fra": {
+    "f": "Vaticane",
+    "m": "Vatican"
+   }
+  }
+ }
+]

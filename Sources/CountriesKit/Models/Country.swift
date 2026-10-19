@@ -1,21 +1,21 @@
 import Foundation
 
-/// A country or territory as REST Countries v3.1 sends it.
+/// A country or territory from the open [mledoze/countries](https://github.com/mledoze/countries)
+/// dataset, the data REST Countries was originally built from.
 ///
-/// Every property is optional: with a `fields` filter the API sends only the fields you asked
-/// for, and some countries leave fields out (Antarctica has no capital, many have no `gini`).
-/// Decoding is lenient field by field, so one field of an unexpected shape becomes `nil` instead
-/// of failing the whole list. Property names match the JSON keys, and the model encodes back to
-/// the API's shape.
+/// Every property is optional, and decoding is lenient field by field: one field of an unexpected
+/// shape becomes `nil` instead of failing the whole list. Property names match the dataset's JSON
+/// keys (except ``CountryName/nativeName``, stored as `native`), and the model encodes back to the
+/// dataset's shape.
 ///
-/// The extensions add the values apps usually want: ``commonName``, ``flagEmoji``,
-/// ``coordinate``, ``currencyList``, ``languageList``, ``latestGini``, ``drivingSide`` and more.
+/// The extensions add the values apps usually want: ``commonName``, ``flagURL``, ``flagEmoji``,
+/// ``coordinate``, ``currencyList``, ``languageList``, ``callingCodes`` and more.
 public struct Country: Codable, Hashable, Sendable, Identifiable {
     /// Common, official and native names.
     public var name: CountryName?
     /// Top-level internet domains, such as `[".tr"]`.
     public var tld: [String]?
-    /// ISO 3166-1 alpha-2 code, such as `TR`.
+    /// ISO 3166-1 alpha-2 code, such as `TR`. The flag images are looked up by it.
     public var cca2: String?
     /// ISO 3166-1 numeric code, such as `792`.
     public var ccn3: String?
@@ -29,6 +29,8 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
     public var status: String?
     /// Whether the country is a member of the United Nations.
     public var unMember: Bool?
+    /// The United Nations regional group, such as `Asia and the Pacific Group`.
+    public var unRegionalGroup: String?
     /// Currencies by ISO 4217 code. See ``currencyList``.
     public var currencies: [String: Currency]?
     /// International direct dialing. See ``callingCodes``.
@@ -57,30 +59,6 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
     public var demonyms: [String: Demonym]?
     /// The flag emoji. See ``flagEmoji``, which also works without this field.
     public var flag: String?
-    /// Links to Google Maps and OpenStreetMap.
-    public var maps: Maps?
-    /// Population.
-    public var population: Int?
-    /// World Bank Gini index by year. See ``latestGini``.
-    public var gini: [String: Double]?
-    /// FIFA code.
-    public var fifa: String?
-    /// Car distinguishing signs and the side of the road it drives on.
-    public var car: Car?
-    /// Time zones, such as `["UTC+03:00"]`.
-    public var timezones: [String]?
-    /// Continents; a few countries are on two.
-    public var continents: [String]?
-    /// Flag images: a PNG (320 px wide), an SVG and a description.
-    public var flags: ImageLinks?
-    /// Coat of arms images, when there is one.
-    public var coatOfArms: ImageLinks?
-    /// The first day of the week, such as `monday`.
-    public var startOfWeek: String?
-    /// Where the capital is.
-    public var capitalInfo: CapitalInfo?
-    /// Postal code format and pattern.
-    public var postalCode: PostalCode?
 
     /// A stable identifier: the cca3 code, else cca2, else the common name.
     public var id: String {
@@ -97,6 +75,7 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
         independent: Bool? = nil,
         status: String? = nil,
         unMember: Bool? = nil,
+        unRegionalGroup: String? = nil,
         currencies: [String: Currency]? = nil,
         idd: CallingCode? = nil,
         capital: [String]? = nil,
@@ -110,19 +89,7 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
         borders: [String]? = nil,
         area: Double? = nil,
         demonyms: [String: Demonym]? = nil,
-        flag: String? = nil,
-        maps: Maps? = nil,
-        population: Int? = nil,
-        gini: [String: Double]? = nil,
-        fifa: String? = nil,
-        car: Car? = nil,
-        timezones: [String]? = nil,
-        continents: [String]? = nil,
-        flags: ImageLinks? = nil,
-        coatOfArms: ImageLinks? = nil,
-        startOfWeek: String? = nil,
-        capitalInfo: CapitalInfo? = nil,
-        postalCode: PostalCode? = nil
+        flag: String? = nil
     ) {
         self.name = name
         self.tld = tld
@@ -133,6 +100,7 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
         self.independent = independent
         self.status = status
         self.unMember = unMember
+        self.unRegionalGroup = unRegionalGroup
         self.currencies = currencies
         self.idd = idd
         self.capital = capital
@@ -147,44 +115,32 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
         self.area = area
         self.demonyms = demonyms
         self.flag = flag
-        self.maps = maps
-        self.population = population
-        self.gini = gini
-        self.fifa = fifa
-        self.car = car
-        self.timezones = timezones
-        self.continents = continents
-        self.flags = flags
-        self.coatOfArms = coatOfArms
-        self.startOfWeek = startOfWeek
-        self.capitalInfo = capitalInfo
-        self.postalCode = postalCode
     }
 
     enum CodingKeys: String, CodingKey {
-        case name, tld, cca2, ccn3, cca3, cioc, independent, status, unMember, currencies, idd
-        case capital, altSpellings, region, subregion, languages, translations, latlng, landlocked
-        case borders, area, demonyms, flag, maps, population, gini, fifa, car, timezones, continents
-        case flags, coatOfArms, startOfWeek, capitalInfo, postalCode
+        case name, tld, cca2, ccn3, cca3, cioc, independent, status, unMember, unRegionalGroup
+        case currencies, idd, capital, altSpellings, region, subregion, languages, translations
+        case latlng, landlocked, borders, area, demonyms, flag
     }
 
     public init(from decoder: any Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         name = c.lenient(CountryName.self, .name)
         tld = c.lenient([String].self, .tld)
-        cca2 = c.lenient(String.self, .cca2)
-        ccn3 = c.lenient(String.self, .ccn3)
-        cca3 = c.lenient(String.self, .cca3)
-        cioc = c.lenient(String.self, .cioc)
+        cca2 = c.lenientText(.cca2)
+        ccn3 = c.lenientText(.ccn3)
+        cca3 = c.lenientText(.cca3)
+        cioc = c.lenientText(.cioc)
         independent = c.lenient(Bool.self, .independent)
-        status = c.lenient(String.self, .status)
+        status = c.lenientText(.status)
         unMember = c.lenient(Bool.self, .unMember)
+        unRegionalGroup = c.lenientText(.unRegionalGroup)
         currencies = c.lenient([String: Currency].self, .currencies)
         idd = c.lenient(CallingCode.self, .idd)
         capital = c.lenient([String].self, .capital)
         altSpellings = c.lenient([String].self, .altSpellings)
-        region = c.lenient(String.self, .region)
-        subregion = c.lenient(String.self, .subregion)
+        region = c.lenientText(.region)
+        subregion = c.lenientText(.subregion)
         languages = c.lenient([String: String].self, .languages)
         translations = c.lenient([String: TranslatedName].self, .translations)
         latlng = c.lenient([Double].self, .latlng)
@@ -192,19 +148,7 @@ public struct Country: Codable, Hashable, Sendable, Identifiable {
         borders = c.lenient([String].self, .borders)
         area = c.lenient(Double.self, .area)
         demonyms = c.lenient([String: Demonym].self, .demonyms)
-        flag = c.lenient(String.self, .flag)
-        maps = c.lenient(Maps.self, .maps)
-        population = c.lenient(Int.self, .population)
-        gini = c.lenient([String: Double].self, .gini)
-        fifa = c.lenient(String.self, .fifa)
-        car = c.lenient(Car.self, .car)
-        timezones = c.lenient([String].self, .timezones)
-        continents = c.lenient([String].self, .continents)
-        flags = c.lenient(ImageLinks.self, .flags)
-        coatOfArms = c.lenient(ImageLinks.self, .coatOfArms)
-        startOfWeek = c.lenient(String.self, .startOfWeek)
-        capitalInfo = c.lenient(CapitalInfo.self, .capitalInfo)
-        postalCode = c.lenient(PostalCode.self, .postalCode)
+        flag = c.lenientText(.flag)
     }
 }
 
@@ -214,16 +158,23 @@ extension KeyedDecodingContainer {
         guard let value = try? decodeIfPresent(type, forKey: key) else { return nil }
         return value
     }
+
+    /// A string for `key`; `nil` when it is missing, empty or not a string. The dataset writes
+    /// `""` for values it does not have, such as the codes of Kosovo.
+    func lenientText(_ key: Key) -> String? {
+        guard let value = lenient(String.self, key), !value.isEmpty else { return nil }
+        return value
+    }
 }
 
 /// A country's names: `{"common":"Germany","official":"Federal Republic of Germany",
-/// "nativeName":{"deu":{…}}}`.
+/// "native":{"deu":{…}}}`.
 public struct CountryName: Codable, Hashable, Sendable {
     /// The everyday name, such as `Germany`.
     public var common: String
     /// The official name, such as `Federal Republic of Germany`.
     public var official: String
-    /// The name in each official language, by ISO 639-3 code.
+    /// The name in each official language, by ISO 639-3 code (the dataset's `native`).
     public var nativeName: [String: TranslatedName]?
 
     public init(common: String, official: String, nativeName: [String: TranslatedName]? = nil) {
@@ -233,13 +184,14 @@ public struct CountryName: Codable, Hashable, Sendable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case common, official, nativeName
+        case common, official
+        case nativeName = "native"
     }
 
     public init(from decoder: any Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        let common = c.lenient(String.self, .common)
-        let official = c.lenient(String.self, .official)
+        let common = c.lenientText(.common)
+        let official = c.lenientText(.official)
         guard common != nil || official != nil else {
             throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: "A name needs common or official."))
         }
@@ -296,140 +248,4 @@ public struct Demonym: Codable, Hashable, Sendable {
 
     public var feminine: String? { f }
     public var masculine: String? { m }
-}
-
-/// Map links.
-public struct Maps: Codable, Hashable, Sendable {
-    public var googleMaps: URL?
-    public var openStreetMaps: URL?
-
-    public init(googleMaps: URL? = nil, openStreetMaps: URL? = nil) {
-        self.googleMaps = googleMaps
-        self.openStreetMaps = openStreetMaps
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case googleMaps, openStreetMaps
-    }
-
-    public init(from decoder: any Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        googleMaps = c.lenientURL(.googleMaps)
-        openStreetMaps = c.lenientURL(.openStreetMaps)
-    }
-}
-
-/// The side of the road traffic drives on.
-public enum DrivingSide: String, Codable, Hashable, Sendable, CaseIterable {
-    case left
-    case right
-}
-
-/// Car signs and driving side: `{"signs":["TR"],"side":"right"}`.
-public struct Car: Codable, Hashable, Sendable {
-    /// International vehicle registration codes.
-    public var signs: [String]?
-    /// The side of the road; `nil` when the API sends something else.
-    public var side: DrivingSide?
-
-    public init(signs: [String]? = nil, side: DrivingSide? = nil) {
-        self.signs = signs
-        self.side = side
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case signs, side
-    }
-
-    public init(from decoder: any Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        signs = c.lenient([String].self, .signs)?.filter { !$0.isEmpty }
-        side = c.lenient(String.self, .side).flatMap { DrivingSide(rawValue: $0.lowercased()) }
-    }
-}
-
-/// Image links for a flag or a coat of arms: `{"png":"https://flagcdn.com/w320/tr.png",
-/// "svg":"https://flagcdn.com/tr.svg","alt":"…"}`. Missing or empty links are `nil`.
-public struct ImageLinks: Codable, Hashable, Sendable {
-    /// A PNG; for flags 320 points wide.
-    public var png: URL?
-    /// An SVG.
-    public var svg: URL?
-    /// A description of the image, for accessibility. Flags only.
-    public var alt: String?
-
-    public init(png: URL? = nil, svg: URL? = nil, alt: String? = nil) {
-        self.png = png
-        self.svg = svg
-        self.alt = alt
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case png, svg, alt
-    }
-
-    public init(from decoder: any Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        png = c.lenientURL(.png)
-        svg = c.lenientURL(.svg)
-        alt = c.lenient(String.self, .alt).flatMap { $0.isEmpty ? nil : $0 }
-    }
-
-    /// Whether there is no image at all (the API sends `{}` for a missing coat of arms).
-    public var isEmpty: Bool {
-        png == nil && svg == nil
-    }
-
-    /// A PNG flag in another width. flagcdn.com, where the API's flags live, serves
-    /// `w20` to `w2560`; other hosts are left unchanged.
-    public func pngURL(width: Int) -> URL? {
-        guard let png = self.png, png.host == "flagcdn.com" else { return self.png }
-        let widths = [20, 40, 80, 160, 320, 640, 1280, 2560]
-        let chosen = widths.first(where: { $0 >= width }) ?? 2560
-        var components = png.pathComponents.filter { $0 != "/" }
-        guard components.count == 2, components[0].hasPrefix("w") else { return png }
-        components[0] = "w" + String(chosen)
-        return URL(string: "https://flagcdn.com/" + components.joined(separator: "/"))
-    }
-}
-
-/// Where the capital is: `{"latlng":[39.93,32.87]}`.
-public struct CapitalInfo: Codable, Hashable, Sendable {
-    public var latlng: [Double]?
-
-    public init(latlng: [Double]? = nil) {
-        self.latlng = latlng
-    }
-
-    /// The capital's position, when known.
-    public var coordinate: Coordinate? {
-        Coordinate(latlng)
-    }
-}
-
-/// Postal codes: `{"format":"#####","regex":"^(\\d{5})$"}`.
-public struct PostalCode: Codable, Hashable, Sendable {
-    public var format: String?
-    public var regex: String?
-
-    public init(format: String? = nil, regex: String? = nil) {
-        self.format = format
-        self.regex = regex
-    }
-
-    /// Whether `code` matches the country's pattern; `nil` when there is no pattern.
-    public func matches(_ code: String) -> Bool? {
-        guard let regex, !regex.isEmpty else { return nil }
-        return code.range(of: regex, options: .regularExpression) != nil
-    }
-}
-
-extension KeyedDecodingContainer {
-    /// A URL sent as a string; `nil` when missing, empty or not a URL.
-    func lenientURL(_ key: Key) -> URL? {
-        guard let string = lenient(String.self, key)?.trimmingCharacters(in: .whitespaces), !string.isEmpty else {
-            return nil
-        }
-        return URL(string: string)
-    }
 }

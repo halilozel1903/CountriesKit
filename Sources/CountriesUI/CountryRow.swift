@@ -1,7 +1,7 @@
 import SwiftUI
 import CountriesKit
 
-/// A list row: the flag, the common name, the capital and the population.
+/// A list row: the flag, the common name, the capital and the area.
 ///
 /// ```swift
 /// List(countries) { country in
@@ -10,11 +10,11 @@ import CountriesKit
 /// ```
 public struct CountryRow: View {
     private let country: Country
-    private let showsPopulation: Bool
+    private let showsArea: Bool
 
-    public init(country: Country, showsPopulation: Bool = true) {
+    public init(country: Country, showsArea: Bool = true) {
         self.country = country
-        self.showsPopulation = showsPopulation
+        self.showsArea = showsArea
     }
 
     public var body: some View {
@@ -35,12 +35,12 @@ public struct CountryRow: View {
                 }
             }
             Spacer(minLength: 8)
-            if showsPopulation, let population = country.formattedPopulation() {
+            if showsArea, let area = country.area, area > 0 {
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text(population)
+                    Text(Self.areaText(area))
                         .font(.subheadline.weight(.semibold).monospacedDigit())
                         .foregroundStyle(Color.primary)
-                    Text("people")
+                    Text("km²")
                         .font(.caption2)
                         .foregroundStyle(Color.secondary)
                 }
@@ -48,6 +48,14 @@ public struct CountryRow: View {
         }
         .padding(.vertical, 4)
         .accessibilityElement(children: .combine)
+    }
+
+    /// `783.6K` for Türkiye, `0.44` for Vatican City.
+    private static func areaText(_ area: Double) -> String {
+        guard area >= 1_000 else {
+            return area.formatted(.number.precision(.fractionLength(0...2)))
+        }
+        return CountryFormat.number(Int(area.rounded()), style: .compact)
     }
 }
 

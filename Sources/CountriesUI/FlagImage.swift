@@ -149,7 +149,7 @@ public struct FlagImage: View {
 
     /// The flag of `country`.
     public init(country: Country, cornerRadius: CGFloat = 4) {
-        self.init(url: country.flagURL, emoji: country.flagEmoji, label: country.flagDescription ?? "Flag of " + country.commonName, cornerRadius: cornerRadius)
+        self.init(url: country.flagURL, emoji: country.flagEmoji, label: "Flag of " + country.commonName, cornerRadius: cornerRadius)
     }
 
     /// A flag image by URL, with an emoji placeholder.

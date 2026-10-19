@@ -118,7 +118,7 @@ struct RegionPicker: View {
     }
 }
 
-/// "53 countries · 745M people · 23M km²" for a region.
+/// "53 countries · 4 subregions · 23.3M km²" for a region.
 struct RegionSummary: View {
     let region: Region
     let countries: [Country]
@@ -144,10 +144,12 @@ struct RegionSummary: View {
 
     private var summary: String {
         let subregions = Set(countries.compactMap(\.subregion)).count
-        let people = CountryFormat.population(countries.totalPopulation, style: .compact)
-        var parts = [String(countries.count) + " countries", people + " people"]
+        var parts = [String(countries.count) + (countries.count == 1 ? " country" : " countries")]
         if subregions > 0 {
             parts.append(String(subregions) + (subregions == 1 ? " subregion" : " subregions"))
+        }
+        if countries.totalArea > 0 {
+            parts.append(CountryFormat.area(countries.totalArea, style: .compact))
         }
         return parts.joined(separator: " · ")
     }

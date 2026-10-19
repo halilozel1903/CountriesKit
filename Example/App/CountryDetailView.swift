@@ -3,8 +3,7 @@ import CountriesKit
 import CountriesUI
 
 /// A country's page: the flag, its names, the facts, languages and currencies, and the
-/// neighbours it shares a land border with. Every field comes from one `/alpha/{code}` request,
-/// the neighbours from one `/alpha?codes=` request.
+/// neighbours it shares a land border with, all from the dataset the client keeps in memory.
 struct CountryDetailView: View {
     let code: String
     /// The screenshot scene this page reports ready for, if any.
@@ -124,29 +123,27 @@ struct CountryDetailView: View {
     private func facts(_ country: Country) -> some View {
         let columns = [GridItem(.adaptive(minimum: 150), spacing: 10)]
         return LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
-            FactTile("Capital", value: country.primaryCapital ?? "None", detail: country.capitalCoordinate?.description, systemImage: "building.columns.fill")
-            if let population = country.population {
-                FactTile("Population", value: CountryFormat.population(population, style: .full), detail: country.populationDensity.map { CountryFormat.density($0) }, systemImage: "person.3.fill")
-            }
+            FactTile("Capital", value: country.primaryCapital ?? "None", detail: otherCapitals(country), systemImage: "building.columns.fill")
             if let area = country.formattedArea() {
-                FactTile("Area", value: area, detail: country.landlocked == true ? "Landlocked" : nil, systemImage: "square.dashed")
+                FactTile("Area", value: area, detail: country.landlocked == true ? "Landlocked" : "Coastline", systemImage: "square.dashed")
             }
             if let callingCode = country.primaryCallingCode {
                 FactTile("Calling code", value: callingCode, detail: country.tld?.joined(separator: " "), systemImage: "phone.fill")
             }
-            if let side = country.drivingSide {
-                FactTile("Drives on the", value: side == .left ? "Left" : "Right", detail: country.car?.signs?.joined(separator: ", "), systemImage: "car.fill")
-            }
-            if let zones = country.timezones, let first = zones.first {
-                FactTile("Time zone", value: first, detail: zones.count > 1 ? "+" + String(zones.count - 1) + " more" : nil, systemImage: "clock.fill")
-            }
-            if let gini = country.latestGini {
-                FactTile("Gini index", value: CountryFormat.gini(gini), detail: "World Bank", systemImage: "chart.bar.fill")
-            }
             if let demonym = country.demonym {
-                FactTile("People", value: demonym, detail: country.startOfWeek.map { "Week starts " + $0.capitalized }, systemImage: "person.fill")
+                FactTile("People", value: demonym, detail: country.demonyms?["fra"]?.masculine.map { "French: " + $0 }, systemImage: "person.fill")
+            }
+            FactTile("Status", value: country.independent == true ? "Independent" : "Territory", detail: country.unMember == true ? "UN member" : "Not a UN member", systemImage: "checkmark.seal.fill")
+            if let coordinate = country.coordinate {
+                FactTile("Centre", value: coordinate.description, detail: country.unRegionalGroup.map { $0.replacingOccurrences(of: " Group", with: "") }, systemImage: "location.fill")
             }
         }
+    }
+
+    /// "+1 more" when a country has several capitals.
+    private func otherCapitals(_ country: Country) -> String? {
+        let count = (country.capital ?? []).filter { !$0.isEmpty }.count
+        return count > 1 ? "+" + String(count - 1) + " more" : nil
     }
 
     private func languagesAndCurrencies(_ country: Country) -> some View {

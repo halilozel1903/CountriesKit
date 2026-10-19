@@ -168,6 +168,21 @@ struct ClientTests {
         }
     }
 
+    @Test func errorObjectWithSuccessStatusThrows() async throws {
+        let stub = StubbedClient { _ in .raw(#"{"status":400,"message":"Bad Request"}"#) }
+        do {
+            _ = try await stub.client.countries(in: .europe, fields: CountryField.listing)
+            Issue.record("Expected an HTTP error")
+        } catch let error as CountriesError {
+            guard case let .http(status, message, _) = error else {
+                Issue.record("Expected http")
+                return
+            }
+            #expect(status == 400)
+            #expect(message == "Bad Request")
+        }
+    }
+
     @Test func undecodableBody() async throws {
         let stub = StubbedClient { _ in .raw("not json") }
         do {

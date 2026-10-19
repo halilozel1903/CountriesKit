@@ -16,6 +16,15 @@ jobs:
     runs-on: macos-26
     steps:
       - uses: actions/checkout@v5
+      - name: REST Countries reachability
+        run: |
+          for path in "region/europe?fields=name,cca3,flags" "alpha/TUR?fields=name,borders" "all?fields=name,cca3"; do
+            echo "== https://restcountries.com/v3.1/$path"
+            curl -sS -m 30 -D - -o body.txt "https://restcountries.com/v3.1/$path" || true
+            head -c 400 body.txt || true
+            echo
+          done
+          rm -f body.txt
       - name: Toolchain
         run: |
           swift --version

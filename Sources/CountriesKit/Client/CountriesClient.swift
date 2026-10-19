@@ -64,7 +64,7 @@ public struct CountriesClient: Sendable {
         }
         let request = try makeRequest(["alpha", code], query: Self.fieldsQuery(CountryField.unique(fields)))
         let body = try await data(for: request)
-        guard let country = try decode(OneOrMany<Country>.self, from: body).items.first else {
+        guard let country = try countries(from: body, url: request.url ?? configuration.baseURL).first else {
             throw CountriesError.notFound(url: request.url ?? configuration.baseURL)
         }
         return country
@@ -192,11 +192,25 @@ public struct CountriesClient: Sendable {
     }
 
     func list(_ segments: [String], query: [URLQueryItem]) async throws -> [Country] {
+        let request = try makeRequest(segments, query: query)
         let body: Data
         do {
-            body = try await data(for: makeRequest(segments, query: query))
+            body = try await data(for: request)
         } catch CountriesError.notFound {
             return []
+        }
+        return try countries(from: body, url: request.url ?? configuration.baseURL)
+    }
+
+    /// The countries in a successful response: an array, or the single object `/alpha/{code}`
+    /// answers with `fields`. A body that is the API's error object (`{"status":…,"message":…}`)
+    /// throws ``CountriesError/http(statusCode:message:url:)`` instead of passing for an empty
+    /// country, since every `Country` field is optional.
+    func countries(from body: Data, url: URL) throws -> [Country] {
+        if let object = try? JSONSerialization.jsonObject(with: body) as? [String: Any],
+           let message = object["message"] {
+            let status = (object["status"] as? NSNumber)?.intValue ?? 200
+            throw CountriesError.http(statusCode: status, message: (message as? String) ?? String(describing: message), url: url)
         }
         return try decode(OneOrMany<Country>.self, from: body).items
     }
@@ -240,7 +254,8 @@ public struct CountriesClient: Sendable {
         do {
             return try JSONDecoder().decode(Value.self, from: data)
         } catch {
-            throw CountriesError.decoding(type: String(describing: Value.self), description: String(describing: error))
+            let start = String(decoding: data.prefix(300), as: UTF8.self)
+            throw CountriesError.decoding(type: String(describing: Value.self), description: "\(error); the body starts with: \(start)")
         }
     }
 
